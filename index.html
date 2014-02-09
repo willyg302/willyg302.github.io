@@ -1,61 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
+	<title>WillyG Productions</title>
 	<meta charset="utf-8">
-	<title>WillyG Productions GitHub</title>
-	<link href="data:image/x-icon;base64,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" rel="icon" type="image/x-icon" />
-	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-
-	<style type="text/css">
-	a.social {
-		color:#888888;
-	}
-	a.social:hover {
-		text-decoration:none;
-	}
-	a.youtube:hover {
-		color:#cd332d;
-	}
-	a.wordpress:hover {
-		color:#21759b;
-	}
-	a.github:hover {
-		color:#000000;
-	}
-	a.facebook:hover {
-		color:#3b5998;
-	}
-	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="William Gaul">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/tipsy.css">
+	<link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8APCy//zwsv/////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8APCy//zwsv/88LL//PCy//////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wA8LL//PCy//////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8AnJTegf///wD///8APCy//zwsv/////8A////AJyU3oH///8A////AP///wD///8A////AP///wD///8APCy//zwsv/////8A////ADwsv/88LL//////AP///wA8LL//PCy//////wD///8A////AP///wD///8APCy//zwsv/+clN6B////AP///wD///8A////AP///wD///8AnJTegTwsv/88LL//////AP///wD///8APCy//zwsv/88LL//////AP///wD///8A////AP///wD///8A////AP///wA8LL//PCy//zwsv/////8APCy//zwsv/88LL//PCy//////wD///8APCy//////wD///8APCy//////wD///8APCy//zwsv/88LL//PCy//zwsv/88LL//PCy//zwsv/////8A////ADwsv/////8A////ADwsv/////8A////ADwsv/88LL//PCy//zwsv/////8APCy//zwsv/////8A////AJyU3oE8LL//////AP///wA8LL//nJTegf///wD///8APCy//zwsv/////8A////AP///wA8LL//////AP///wA8LL//PCy//////wD///8APCy//zwsv/////8A////ADwsv/////8A////AP///wD///8A////AP///wD///8APCy//zwsv/////8A////ADwsv/88LL//////AP///wD///8A////AP///wD///8A////AP///wD///8A////ADwsv/88LL//////AP///wA8LL//PCy//////wD///8A////AP///wD///8A////AP///wD///8A////AP///wA8LL//PCy//zwsv/88LL//PCy//zwsv/////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////ADwsv/88LL//PCy//zwsv/////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8APCy//zwsv/////8A////AP///wD///8A////AP///wD///8A/n8AAPw/AAD+fwAA9m8AAOZnAADH4wAAj/EAAA2wAAANsAAAmZkAANmbAAD5nwAA+Z8AAPgfAAD8PwAA/n8AAA==" rel="icon" type="image/x-icon" />
 </head>
 <body>
-	<div class="container">
-		<section id="welcome">
-			<div class="page-header">
-				<div class="media">
-					<a class="pull-left" href="#"><img class="media-object" src="willyg_avatar.png" width="64"></a>
-					<div class="media-body"><h1>GitHub Wiki</h1></div>
-				</div>
-			</div>
-			<p class="lead">Welcome to my GitHub Wiki! Psst...there's actually nothing to see here. If you somehow arrived here by mistake, you might be looking for one of the sites below:</p>
-		</section>
-		<div class="marketing">
-			<div class="row-fluid">
-				<div class="span4">
-					<a href="http://willyg302.github.io/Sagittarius/"><img class="marketing-img" src="https://raw.github.com/willyg302/Sagittarius/master/Media/Sagittarius_Logo_922x260.png" /></a>
-					<h2>Sagittarius Wiki</h2>
-					<p>Visit the wiki for Sagittarius, a free online game service built on Google App Engine.</p>
-				</div>
-			</div>
+	<div id="filters" class="button-group">
+		<button class="button is-checked" data-filter-value="*">Home</button>
+		<button class="button" data-filter-value=".project, .logo">Projects</button>
+		<button class="button" data-filter-value=".social, .logo">Contact</button>
+	</div>
+	<div id="sorts" class="button-group" style="display: inline-block;">
+		<button class="button is-checked" data-sort-value="original-order">Default</button>
+		<button class="button" data-sort-value="name">Name</button>
+	</div>
+	<br>
+	<div class="isotope">
+		<div class="item logo">
+			<img src="img/willyg-logo.svg" >
 		</div>
-		<div align="center" style="margin-top:20px;">
-			<p>
-				<a href="http://www.youtube.com/user/willyg302" class="social youtube"><i class="icon-youtube-sign icon-4x"></i></a>
-				<a href="http://willyg302.wordpress.com/" class="social wordpress"><i class="icon-pencil icon-4x"></i><a/>
-				<a href="https://github.com/willyg302" class="social github"><i class="icon-github-sign icon-4x"></i></a>
-				<a href="https://www.facebook.com/WillygProductions" class="social facebook"><i class="icon-facebook-sign icon-4x"></i></a>
-			</p>
+
+
+		<!-- GITHUB PROJECTS -->
+
+		<div class="item project unrealscript">
+			<a href="http://willyg302.github.io/Sagittarius/"></a>
+			<h2 class="title">Sagittarius</h3>
+			<p class="desc">Visit the wiki for Sagittarius, a free online game service built on Google App Engine</p>
+		</div>
+
+		<div class="item project javascript">
+			<a href="http://willyg302.github.io/Dave-Likes-Pizza/"></a>
+			<h2 class="title">Dave Likes Pizza</h3>
+			<p class="desc">An HTML5 game written in JavaScript over the course of one week</p>
+		</div>
+
+		<div class="item project python">
+			<a href="https://github.com/willyg302/Noat"></a>
+			<h2 class="title">Noat</h3>
+			<p class="desc">A dead-simple app for CRUD-ing tiny bits of information, powered by Google App Engine</p>
+		</div>
+
+		<div class="item project javascript">
+			<a href="https://github.com/willyg302/jarvis"></a>
+			<h2 class="title">jarvis</h3>
+			<p class="desc">Just A Really Very Idiotic Shell</p>
+		</div>
+
+		<!--
+		<div class="item video">
+			Unreal Engine 4 Montage 2013
+		</div>
+		-->
+		
+		<!-- SOCIAL -->
+
+		<div class="item social">
+			<a href="https://www.facebook.com/WillygProductions" title="Facebook" rel="tipsy"><img src="img/webicon-facebook.svg"></a>
+		</div>
+		<div class="item social">
+			<a href="https://github.com/willyg302" title="GitHub" rel="tipsy"><img src="img/webicon-github.svg"></a>
+		</div>
+		<div class="item social">
+			<a href="http://www.linkedin.com/pub/william-gaul/79/8b1/507" title="LinkedIn" rel="tipsy"><img src="img/webicon-linkedin.svg"></a>
+		</div>
+		<div class="item social">
+			<script>
+			function printAddress(n, d, e, inner) {
+				document.write("<a href=\"" + "mail" + "to:" + n + "@" + d + "." + e + "\" title=\"Mail\" rel=\"tipsy\">" + inner + "</a>");
+			}
+			printAddress("willyg302", "gmail", "com", "<img src=\"img/webicon-mail.svg\">");
+			</script>
+		</div>
+		<div class="item social">
+			<a href="http://stackoverflow.com/users/2749401/william-gaul" title="Stack Overflow" rel="tipsy"><img src="img/webicon-stackoverflow.svg"></a>
+		</div>
+		<div class="item social">
+			<a href="http://willyg302.wordpress.com/" title="WordPress" rel="tipsy"><img src="img/webicon-wordpress.svg"></a>
+		</div>
+		<div class="item social">
+			<a href="http://www.youtube.com/user/willyg302" title="YouTube" rel="tipsy"><img src="img/webicon-youtube.svg"></a>
 		</div>
 	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.tipsy.min.js"></script>
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<script src="js/isotope.pkgd.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>
