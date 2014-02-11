@@ -1,5 +1,30 @@
+/*
+var funfact = [
+	"I own four guitars and jam quite frequently",
+	"I have never been to Antarctica",
+	"my favorite country is Djibouti because it sounds cool",
+	"my high score in bowling is 278",
+	"I am a big proponent of open source projects",
+	"my favorite number is 1 in decennoval"
+];
+
+randomFact = function() {
+	$("#fact").fadeOut(function() {
+		$("#fact").text(funfact[Math.floor(Math.random() * funfact.length)] + ".");
+		$("#fact").fadeIn(function() {
+			setTimeout(randomFact, 10000);
+		});
+	});
+};*/
+
 $(function() {
 	$('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});  // Init our tooltips!
+
+	// randomFact();  // Yay fun facts! [EDIT: not for now...]
+
+	$('select').selectric({disableOnMobile: false});
+
+	
 
 	// Initialize Isotope AFTER images have been loaded
 	var $container = $('.isotope').imagesLoaded(function() {
@@ -22,22 +47,12 @@ $(function() {
 		});
 	});
 
-	// Bind filter buttons
-	$('#filters').on('click', 'button', function() {
-		$container.isotope({filter: $(this).attr('data-filter-value')});
+
+	$('#filters select').change(function() {
+		$container.isotope({filter: $(this).val()});
 	});
 
-	// Bind sort buttons
-	$('#sorts').on('click', 'button', function() {
-		$container.isotope({sortBy: $(this).attr('data-sort-value')});
-	});
-	
-	// Change [is-checked] class on buttons
-	$('.button-group').each(function(i, buttonGroup) {
-		var $buttonGroup = $(buttonGroup);
-		$buttonGroup.on('click', 'button', function() {
-			$buttonGroup.find('.is-checked').removeClass('is-checked');
-			$(this).addClass('is-checked');
-		});
-	});
+	$('#sorts select').change(function() {
+		$container.isotope({sortBy: $(this).val()});
+	})
 });

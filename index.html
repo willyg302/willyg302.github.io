@@ -6,24 +6,55 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="William Gaul">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/selectric.css">
 	<link rel="stylesheet" href="css/tipsy.css">
+	<link rel="stylesheet" href="css/main.css">
 	<link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8APCy//zwsv/////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8APCy//zwsv/88LL//PCy//////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wA8LL//PCy//////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8AnJTegf///wD///8APCy//zwsv/////8A////AJyU3oH///8A////AP///wD///8A////AP///wD///8APCy//zwsv/////8A////ADwsv/88LL//////AP///wA8LL//PCy//////wD///8A////AP///wD///8APCy//zwsv/+clN6B////AP///wD///8A////AP///wD///8AnJTegTwsv/88LL//////AP///wD///8APCy//zwsv/88LL//////AP///wD///8A////AP///wD///8A////AP///wA8LL//PCy//zwsv/////8APCy//zwsv/88LL//PCy//////wD///8APCy//////wD///8APCy//////wD///8APCy//zwsv/88LL//PCy//zwsv/88LL//PCy//zwsv/////8A////ADwsv/////8A////ADwsv/////8A////ADwsv/88LL//PCy//zwsv/////8APCy//zwsv/////8A////AJyU3oE8LL//////AP///wA8LL//nJTegf///wD///8APCy//zwsv/////8A////AP///wA8LL//////AP///wA8LL//PCy//////wD///8APCy//zwsv/////8A////ADwsv/////8A////AP///wD///8A////AP///wD///8APCy//zwsv/////8A////ADwsv/88LL//////AP///wD///8A////AP///wD///8A////AP///wD///8A////ADwsv/88LL//////AP///wA8LL//PCy//////wD///8A////AP///wD///8A////AP///wD///8A////AP///wA8LL//PCy//zwsv/88LL//PCy//zwsv/////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////ADwsv/88LL//PCy//zwsv/////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8APCy//zwsv/////8A////AP///wD///8A////AP///wD///8A/n8AAPw/AAD+fwAA9m8AAOZnAADH4wAAj/EAAA2wAAANsAAAmZkAANmbAAD5nwAA+Z8AAPgfAAD8PwAA/n8AAA==" rel="icon" type="image/x-icon" />
 </head>
 <body>
-	<div id="filters" class="button-group">
-		<button class="button is-checked" data-filter-value="*">Home</button>
-		<button class="button" data-filter-value=".project, .logo">Projects</button>
-		<button class="button" data-filter-value=".social, .logo">Contact</button>
+	<div id="filters">
+		<select>
+			<option value="*">Home</option>
+			<option value=".about, .logo" >About</option>
+			<option value=".project, .logo">Projects</option>
+			<option value=".social, .logo">Contact</option>
+		</select>
 	</div>
-	<div id="sorts" class="button-group" style="display: inline-block;">
-		<button class="button is-checked" data-sort-value="original-order">Default</button>
-		<button class="button" data-sort-value="name">Name</button>
+	<div id="sorts">
+		<select>
+			<option value="original-order">Default</option>
+			<option value="name">Name</option>
+		</select>
 	</div>
 	<br>
 	<div class="isotope">
 		<div class="item logo">
 			<img src="img/willyg-logo.svg" >
+		</div>
+
+		<!-- ABOUT -->
+		<div class="item about xx yy">
+			<h1>Hi There!</h1>
+			<p class="desc">
+				I'm just a guy who likes to make things that do stuff. I used to be an aspiring game developer (and still am), but more recently I've discovered the wonderful world of full-stack applications.
+			</p><!-- @TODO Reinstate later?
+			<p class="desc">
+				<b>Fun fact</b>: <span id="fact"></span>
+			</p>-->
+		</div>
+
+		<div class="item about x yy">
+			<h4>Programming Languages</h4>
+			<p class="desc">
+				Java<br>
+				Python<br>
+				UnrealScript<br>
+				JavaScript<br>
+				C/C++<br>
+				Lisp<br>
+				Erlang<br>
+				LaTeX
+			</p>
 		</div>
 
 
@@ -52,6 +83,8 @@
 			<h2 class="title">jarvis</h3>
 			<p class="desc">Just A Really Very Idiotic Shell</p>
 		</div>
+
+
 
 		<!--
 		<div class="item video">
@@ -89,6 +122,7 @@
 		</div>
 	</div>
 	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.selectric.min.js"></script>
 	<script src="js/jquery.tipsy.min.js"></script>
 	<script src="js/imagesloaded.pkgd.min.js"></script>
 	<script src="js/isotope.pkgd.min.js"></script>
