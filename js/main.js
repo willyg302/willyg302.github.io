@@ -25,7 +25,6 @@ $(function() {
 	$('select').selectric({disableOnMobile: false});
 
 	
-
 	// Initialize Isotope AFTER images have been loaded
 	var $container = $('.isotope').imagesLoaded(function() {
 		$container.isotope({
@@ -55,4 +54,11 @@ $(function() {
 	$('#sorts select').change(function() {
 		$container.isotope({sortBy: $(this).val()});
 	})
+
+	$container.on('click', '.expandable', function() {
+		var self = $(this);
+		self.toggleClass(self.find('#expand').html());
+		self.find('#content').toggle();
+		$container.isotope('layout');
+	});
 });
