@@ -18,8 +18,6 @@ randomFact = function() {
 };*/
 
 $(function() {
-	$('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});  // Init our tooltips!
-
 	// randomFact();  // Yay fun facts! [EDIT: not for now...]
 
 	$('select').selectric({disableOnMobile: false});
