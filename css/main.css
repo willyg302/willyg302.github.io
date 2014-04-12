@@ -53,6 +53,11 @@ body {
 
 /** HEADER **/
 
+.logo {
+	width: 128px;
+	height: 128px;
+}
+
 #title, #tagline {
 	position: absolute;
 	left: 150px;
