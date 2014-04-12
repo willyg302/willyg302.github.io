@@ -19,23 +19,11 @@ body {
 	margin: 0;
 }
 
-.row, .col {
+.row {
 	overflow: hidden;
 	position: absolute;
-}
-
-.row {
 	left: 0;
 	right: 0;
-}
-
-.col {
-	top: 0;
-	bottom: 0;
-}
-
-.scroll-x {
-	overflow-x: auto;
 }
 
 .scroll-y {
@@ -45,29 +33,54 @@ body {
 
 /** PANE CONFIGURATION **/
 
+.row {
+	padding: 8px;
+}
+
 .header.row {
 	height: 144px;
+	overflow: visible;
 	background-color: #f8f8f8;
 	box-shadow: 0 0 10px 2px #969896;
 	z-index: 100;
-	overflow: visible;
 }
+
 .body.row {
 	top: 144px;
 	bottom: 0;
-	padding: 8px;
-}
-
-
-.header {
-	padding: 8px;
 }
 
 
 /** HEADER **/
+
 .logo {
 	width: 128px;
 	height: 128px;
+}
+
+#title, #tagline {
+	position: absolute;
+	left: 150px;
+	color: #073642;
+	font-size: 20px;
+	background-color: white;
+	padding: 0 4px 0 4px;
+	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+#title {
+	top: 42px;
+	font-weight: bold;
+}
+
+#tagline {
+	top: 75px;
+}
+
+@media(max-width: 576px) {
+	#title, #tagline {
+		display: none;
+	}
 }
 
 
@@ -96,8 +109,6 @@ body {
 	padding: 0;
 }
 
-
-
 .project {
 	width: 280px;
 	height: 136px;
@@ -116,9 +127,7 @@ body {
 .project, .about {
 	background-color: #ffffff;
 	padding: 10px;
-	-moz-box-shadow:    0px 0px 5px 1px rgba(0, 0, 0, 0.1);
-	-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
-	box-shadow:         0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
 .project a {
