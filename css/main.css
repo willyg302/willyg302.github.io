@@ -13,6 +13,64 @@ body {
 }
 
 
+/** http://blog.stevensanderson.com/2011/10/05/full-height-app-layouts-a-css-trick-to-make-it-easier/ **/
+
+body {
+	margin: 0;
+}
+
+.row, .col {
+	overflow: hidden;
+	position: absolute;
+}
+
+.row {
+	left: 0;
+	right: 0;
+}
+
+.col {
+	top: 0;
+	bottom: 0;
+}
+
+.scroll-x {
+	overflow-x: auto;
+}
+
+.scroll-y {
+	overflow-y: auto;
+}
+
+
+/** PANE CONFIGURATION **/
+
+.header.row {
+	height: 144px;
+	background-color: #f8f8f8;
+	box-shadow: 0 0 10px 2px #969896;
+	z-index: 100;
+	overflow: visible;
+}
+.body.row {
+	top: 144px;
+	bottom: 0;
+	padding: 8px;
+}
+
+
+.header {
+	padding: 8px;
+}
+
+
+/** HEADER **/
+.logo {
+	width: 128px;
+	height: 128px;
+}
+
+
 /** ISOTOPE **/
 
 .isotope:after {
@@ -38,10 +96,7 @@ body {
 	padding: 0;
 }
 
-.logo {
-	width: 280px;
-	height: 280px;
-}
+
 
 .project {
 	width: 280px;

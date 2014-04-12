@@ -19,9 +19,6 @@ randomFact = function() {
 
 $(function() {
 	// randomFact();  // Yay fun facts! [EDIT: not for now...]
-
-	$('select').selectric({disableOnMobile: false});
-
 	
 	// Initialize Isotope AFTER images have been loaded
 	var $container = $('.isotope').imagesLoaded(function() {
@@ -29,30 +26,21 @@ $(function() {
 			itemSelector: '.item',
 			layoutMode: 'masonry',
 			masonry: {
-				columnWidth: 72  // Magic number: 64 + 4*4 (64 = width of smallest square, 4 = smallest margin)
-			},
-			getSortData: {
-				name: '.title',
-				symbol: '.symbol',
-				number: '.number parseInt',
-				category: '[data-category]',
-				weight: function( itemElem ) {
-					var weight = $( itemElem ).find('.weight').text();
-					return parseFloat( weight.replace( /[\(\)]/g, '') );
-				}
+				columnWidth: 72  // Magic number: 64 + 2*4 (64 = width of smallest square, 4 = smallest margin)
 			}
 		});
 	});
 
-
-	$('#filters select').change(function() {
-		$container.isotope({filter: $(this).val()});
+	// Filters
+	$('ul.menu > li > a').on('click', function(e) {
+		var self = $(this);
+		e.preventDefault();
+		$('ul.menu').find('a.active').removeClass('active');
+		self.addClass('active');
+		$container.isotope({filter: self.attr('data-filter')});
 	});
 
-	$('#sorts select').change(function() {
-		$container.isotope({sortBy: $(this).val()});
-	})
-
+	// Handle expandable tiles
 	$container.on('click', '.expandable', function() {
 		var self = $(this);
 		self.toggleClass(self.find('#expand').html());
