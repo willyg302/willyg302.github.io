@@ -54,6 +54,7 @@ body {
 /** HEADER **/
 
 .logo {
+	display: inline-block;
 	width: 128px;
 	height: 128px;
 }
