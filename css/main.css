@@ -26,16 +26,10 @@ body {
 	right: 0;
 }
 
-.overthrow-enabled .overthrow {
-	overflow: auto;
-	-webkit-overflow-scrolling: touch;
-}
-
-/*
 .scroll-y {
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
-}*/
+}
 
 
 /** PANE CONFIGURATION **/
