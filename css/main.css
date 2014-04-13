@@ -28,6 +28,7 @@ body {
 
 .scroll-y {
 	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 
