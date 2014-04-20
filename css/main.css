@@ -9,25 +9,8 @@ html {
 }
 
 body {
-	font-family: 'Open Sans', sans-serif;
-}
-
-
-/** http://blog.stevensanderson.com/2011/10/05/full-height-app-layouts-a-css-trick-to-make-it-easier/ **/
-
-body {
 	margin: 0;
-}
-
-.row {
-	overflow: hidden;
-	position: absolute;
-	left: 0;
-	right: 0;
-}
-
-.scroll-y {
-	overflow-y: auto;
+	font-family: 'Open Sans', sans-serif;
 }
 
 

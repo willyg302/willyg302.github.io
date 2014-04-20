@@ -84,6 +84,7 @@ ul.menu {
 	.menu {
 		background: #ffffff;
 		border-top: 1px solid #dc322f;
+		z-index: 100;
 	}
 
 	.menu, .menu > li, .menu > li > a {
