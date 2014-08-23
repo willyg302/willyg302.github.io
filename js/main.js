@@ -1,24 +1,4 @@
-/*
-var funfact = [
-	"I own four guitars and jam quite frequently",
-	"I have never been to Antarctica",
-	"my favorite country is Djibouti because it sounds cool",
-	"my high score in bowling is 278",
-	"I am a big proponent of open source projects",
-	"my favorite number is 1 in decennoval"
-];
-
-randomFact = function() {
-	$("#fact").fadeOut(function() {
-		$("#fact").text(funfact[Math.floor(Math.random() * funfact.length)] + ".");
-		$("#fact").fadeIn(function() {
-			setTimeout(randomFact, 10000);
-		});
-	});
-};*/
-
 $(function() {
-	// randomFact();  // Yay fun facts! [EDIT: not for now...]
 	
 	// Initialize Isotope AFTER images have been loaded
 	var $container = $('.isotope').imagesLoaded(function() {
