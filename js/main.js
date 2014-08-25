@@ -17,6 +17,7 @@ $(function() {
 		e.preventDefault();
 		$('ul.menu').find('a.active').removeClass('active');
 		self.addClass('active');
+		window.location.hash = self.attr('href');
 		$container.isotope({filter: self.attr('data-filter')});
 	});
 
@@ -27,4 +28,7 @@ $(function() {
 		self.find('#content').toggle();
 		$container.isotope('layout');
 	});
+
+	// Handle initial hash, if any
+	$('a[href="' + window.location.hash + '"]').trigger('click');
 });
