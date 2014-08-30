@@ -6,8 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="William Gaul">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/navigataur.css">
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="dist/main.css">
 	<link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8ALzLc/y8y3P////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8ALzLc/y8y3P8vMtz/LzLc/////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wAvMtz/LzLc/////wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8Alpftgf///wD///8ALzLc/y8y3P////8A////AJaX7YH///8A////AP///wD///8A////AP///wD///8ALzLc/y8y3P////8A////AC8y3P8vMtz/////AP///wAvMtz/LzLc/////wD///8A////AP///wD///8ALzLc/y8y3P+Wl+2B////AP///wD///8A////AP///wD///8AlpftgS8y3P8vMtz/////AP///wD///8ALzLc/y8y3P8vMtz/////AP///wD///8A////AP///wD///8A////AP///wAvMtz/LzLc/y8y3P////8ALzLc/y8y3P8vMtz/LzLc/////wD///8ALzLc/////wD///8ALzLc/////wD///8ALzLc/y8y3P8vMtz/LzLc/y8y3P8vMtz/LzLc/y8y3P////8A////AC8y3P////8A////AC8y3P////8A////AC8y3P8vMtz/LzLc/y8y3P////8ALzLc/y8y3P////8A////AJaX7YEvMtz/////AP///wAvMtz/lpftgf///wD///8ALzLc/y8y3P////8A////AP///wAvMtz/////AP///wAvMtz/LzLc/////wD///8ALzLc/y8y3P////8A////AC8y3P////8A////AP///wD///8A////AP///wD///8ALzLc/y8y3P////8A////AC8y3P8vMtz/////AP///wD///8A////AP///wD///8A////AP///wD///8A////AC8y3P8vMtz/////AP///wAvMtz/LzLc/////wD///8A////AP///wD///8A////AP///wD///8A////AP///wAvMtz/LzLc/y8y3P8vMtz/LzLc/y8y3P////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AC8y3P8vMtz/LzLc/y8y3P////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8ALzLc/y8y3P////8A////AP///wD///8A////AP///wD///8A/n8AAPw/AAD+fwAA9m8AAOZnAADH4wAAj/EAAA2wAAANsAAAmZkAANmbAAD5nwAA+Z8AAPgfAAD8PwAA/n8AAA==" rel="icon" type="image/x-icon" />
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -19,160 +18,145 @@
 	</script>
 </head>
 <body>
-	<div class="header row">
-		<div class="logo">
-			<object height="100%" width="100%" data="img/willyg-logo.svg" type="image/svg+xml"></object>
+	<div id="iso" class="row isotope">
+
+		<!-- NAV -->
+		<div class="item x-2 y-2"><object height="100%" width="100%" data="dist/img/willyg-logo.svg" type="image/svg+xml"></object></div>
+
+		<div class="item nav x-2 y-1">Home</div>
+		<div class="item nav x-2 y-1">About</div>
+		<div class="item nav x-2 y-1">Projects</div>
+		<div class="item nav x-2 y-1">Contact</div>
+
+		<!-- ABOUT -->
+
+		<div class="item about x-4 y-4">
+			<h1>Hi There!</h1>
+			<p class="desc">
+				I'm just a guy who likes to make things that do stuff. I used to be an aspiring game developer (and still am), but more recently I've discovered the wonderful world of full-stack applications.
+			</p>
+			<p class="desc">
+				Sometimes I also <a href="/blog">type words</a> in semi-coherent English.
+			</p>
 		</div>
-		<div id="title">WillyG Productions</div>
-		<div id="tagline">I make things that do stuff</div>
-		<div class="nav">
-			<input type="checkbox" id="toggle" />
-			<label for="toggle" class="toggle" onclick></label>
-			<ul class="menu">
-				<li><a href="#" class="active" data-filter="*">Home</a></li>
-				<li><a href="#about" data-filter=".about">About</a></li>
-				<li><a href="#projects" data-filter=".project">Projects</a></li>
-				<li><a href="#contact" data-filter=".social">Contact</a></li>
-			</ul>
+
+		<div class="item about x-2 y-4">
+			<h4>Programming Languages</h4>
+			<p class="desc">
+				Python<br>
+				JavaScript<br>
+				Java<br>
+				UnrealScript<br>
+				C/C++<br>
+				Lisp<br>
+				Erlang<br>
+				LaTeX
+			</p>
 		</div>
-	</div>
-	<div class="body row">
-		<div class="isotope">
 
-			<!-- ABOUT -->
-
-			<div class="item about xx yy">
-				<h1>Hi There!</h1>
-				<p class="desc">
-					I'm just a guy who likes to make things that do stuff. I used to be an aspiring game developer (and still am), but more recently I've discovered the wonderful world of full-stack applications.
-				</p>
-				<p class="desc">
-					Sometimes I also <a href="/blog">type words</a> in semi-coherent English.
+		<div class="item about x-2 y-2 expandable" data-x="x-4" data-y="y-4">
+			<h2>SDE Intern</h2>
+			<small>May 2014 - August 2014</small>
+			<div id="content">
+				<p class="desc">Where: <b>Amazon.com</b></p>
+				<p>
+					<ul>
+						<li>Created an internal operations dashboard to aid in service monitoring and troubleshooting</li>
+						<li>Bootstrapped the design and production of an AWS service console</li>
+					</ul>
 				</p>
 			</div>
+		</div>
 
-			<div class="item about x yy">
-				<h4>Programming Languages</h4>
-				<p class="desc">
-					Python<br>
-					JavaScript<br>
-					Java<br>
-					UnrealScript<br>
-					C/C++<br>
-					Lisp<br>
-					Erlang<br>
-					LaTeX
+		<div class="item about x-2 y-2 expandable" data-x="x-4" data-y="y-4">
+			<h2>Research Assistant</h2>
+			<small>January 2013 - Present</small>
+			<div id="content">
+				<p class="desc">Where: <b>HICHI Lab</b></p>
+				<p>
+					<ul>
+						<li>Created <a href="https://github.com/willyg302/Twitterator">a tool</a> to allow for automated, remote collection of Twitter data</li>
+						<li>Designs and codes <a href="https://github.com/willyg302/Poli">user interface solutions</a> for research in the political sphere</li>
+					</ul>
 				</p>
 			</div>
-
-			<div class="item about x y expandable">
-				<div id="expand">xx yy</div>
-				<h2>SDE Intern</h2>
-				<small>May 2014 - August 2014</small>
-				<div id="content">
-					<p class="desc">Where: <b>Amazon.com</b></p>
-					<p>
-						<ul>
-							<li>Coming soon...</li>
-						</ul>
-					</p>
-				</div>
-			</div>
-
-			<div class="item about x y expandable">
-				<div id="expand">xx yy</div>
-				<h2>Research Assistant</h2>
-				<small>January 2013 - Present</small>
-				<div id="content">
-					<p class="desc">Where: <b>HICHI Lab</b></p>
-					<p>
-						<ul>
-							<li>Created <a href="https://github.com/willyg302/Twitterator">a tool</a> to allow for automated, remote collection of Twitter data</li>
-							<li>Designs and codes <a href="https://github.com/willyg302/Poli">user interface solutions</a> for research in the political sphere</li>
-						</ul>
-					</p>
-				</div>
-			</div>
+		</div>
 
 
-			<!-- SOCIAL -->
+		<!-- SOCIAL -->
 
-			<div class="item social">
-				<a href="https://www.facebook.com/WillygProductions" title="Facebook"><img src="img/icon-facebook.svg"></a>
-			</div>
-			<div class="item social">
-				<a href="https://github.com/willyg302" title="GitHub"><img src="img/icon-github.svg"></a>
-			</div>
-			<div class="item social">
-				<a href="http://www.linkedin.com/pub/william-gaul/79/8b1/507" title="LinkedIn"><img src="img/icon-linkedin.svg"></a>
-			</div>
-			<div class="item social">
-				<script>
-				function printAddress(n, d, e, inner) {
-					document.write("<a href=\"" + "mail" + "to:" + n + "@" + d + "." + e + "\" title=\"Mail\">" + inner + "</a>");
-				}
-				printAddress("willyg302", "gmail", "com", "<img src=\"img/icon-mail.svg\">");
-				</script>
-			</div>
-			<div class="item social">
-				<a href="http://stackoverflow.com/users/2749401/william-gaul" title="Stack Overflow"><img src="img/icon-stackoverflow.svg"></a>
-			</div>
-			<div class="item social">
-				<a href="http://willyg302.wordpress.com/" title="WordPress"><img src="img/icon-wordpress.svg"></a>
-			</div>
-			<div class="item social">
-				<a href="http://www.youtube.com/user/willyg302" title="YouTube"><img src="img/icon-youtube.svg"></a>
-			</div>
+		<div class="item social">
+			<a href="https://www.facebook.com/WillygProductions" title="Facebook"><img src="dist/img/icon-facebook.svg"></a>
+		</div>
+		<div class="item social">
+			<a href="https://github.com/willyg302" title="GitHub"><img src="dist/img/icon-github.svg"></a>
+		</div>
+		<div class="item social">
+			<a href="http://www.linkedin.com/pub/william-gaul/79/8b1/507" title="LinkedIn"><img src="dist/img/icon-linkedin.svg"></a>
+		</div>
+		<div class="item social">
+			<script>
+			function printAddress(n, d, e, inner) {
+				document.write("<a href=\"" + "mail" + "to:" + n + "@" + d + "." + e + "\" title=\"Mail\">" + inner + "</a>");
+			}
+			printAddress("willyg302", "gmail", "com", "<img src=\"dist/img/icon-mail.svg\">");
+			</script>
+		</div>
+		<div class="item social">
+			<a href="http://stackoverflow.com/users/2749401/william-gaul" title="Stack Overflow"><img src="dist/img/icon-stackoverflow.svg"></a>
+		</div>
+		<div class="item social">
+			<a href="http://willyg302.wordpress.com/" title="WordPress"><img src="dist/img/icon-wordpress.svg"></a>
+		</div>
+		<div class="item social">
+			<a href="http://www.youtube.com/user/willyg302" title="YouTube"><img src="dist/img/icon-youtube.svg"></a>
+		</div>
 
 
-			<!-- GITHUB PROJECTS -->
+		<!-- GITHUB PROJECTS -->
 
-			<div class="item project python">
-				<a href="https://github.com/willyg302/strap.py"></a>
-				<h2 class="title">strap.py</h2>
-				<p class="desc">A simple tool for cloning, copying, and initializing Python projects</p>
-			</div>
+		<div class="item project python">
+			<a href="https://github.com/willyg302/strap.py"></a>
+			<h2 class="title">strap.py</h2>
+			<p class="desc">A simple tool for cloning, copying, and initializing Python projects</p>
+		</div>
 
-			<div class="item project python">
-				<a href="https://github.com/willyg302/supers.py"></a>
-				<h2 class="title">supers.py</h2>
-				<p class="desc">Watch JSON objects like James Bond</p>
-			</div>
+		<div class="item project python">
+			<a href="https://github.com/willyg302/supers.py"></a>
+			<h2 class="title">supers.py</h2>
+			<p class="desc">Watch JSON objects like James Bond</p>
+		</div>
 
-			<div class="item project python">
-				<a href="https://github.com/willyg302/clip.py"></a>
-				<h2 class="title">clip.py</h2>
-				<p class="desc">Embeddable, composable [c]ommand [l]ine [i]nterface [p]arsing</p>
-			</div>
+		<div class="item project python">
+			<a href="https://github.com/willyg302/clip.py"></a>
+			<h2 class="title">clip.py</h2>
+			<p class="desc">Embeddable, composable [c]ommand [l]ine [i]nterface [p]arsing</p>
+		</div>
 
-			<div class="item project unrealscript">
-				<a href="http://willyg302.github.io/Sagittarius/"></a>
-				<h2 class="title">Sagittarius</h2>
-				<p class="desc">Visit the wiki for Sagittarius, a free online game service built on Google App Engine</p>
-			</div>
+		<div class="item project unrealscript">
+			<a href="http://willyg302.github.io/Sagittarius/"></a>
+			<h2 class="title">Sagittarius</h2>
+			<p class="desc">Visit the wiki for Sagittarius, a free online game service built on Google App Engine</p>
+		</div>
 
-			<div class="item project javascript">
-				<a href="http://willyg302.github.io/Dave-Likes-Pizza/"></a>
-				<h2 class="title">Dave Likes Pizza</h2>
-				<p class="desc">An HTML5 game written in JavaScript over the course of one week</p>
-			</div>
+		<div class="item project javascript">
+			<a href="http://willyg302.github.io/Dave-Likes-Pizza/"></a>
+			<h2 class="title">Dave Likes Pizza</h2>
+			<p class="desc">An HTML5 game written in JavaScript over the course of one week</p>
+		</div>
 
-			<div class="item project python">
-				<a href="https://github.com/willyg302/Noat"></a>
-				<h2 class="title">Noat</h2>
-				<p class="desc">A dead-simple app for CRUD-ing tiny bits of information, powered by Google App Engine</p>
-			</div>
+		<div class="item project python">
+			<a href="https://github.com/willyg302/Noat"></a>
+			<h2 class="title">Noat</h2>
+			<p class="desc">A dead-simple app for CRUD-ing tiny bits of information, powered by Google App Engine</p>
+		</div>
 
-			<div class="item project javascript">
-				<a href="https://github.com/willyg302/jarvis"></a>
-				<h2 class="title">jarvis</h2>
-				<p class="desc">Just A Really Very Idiotic Shell</p>
-			</div>
+		<div class="item project javascript">
+			<a href="https://github.com/willyg302/jarvis"></a>
+			<h2 class="title">jarvis</h2>
+			<p class="desc">Just A Really Very Idiotic Shell</p>
 		</div>
 	</div>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/imagesloaded.pkgd.min.js"></script>
-	<script src="js/isotope.pkgd.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="dist/main.js"></script>
 </body>
 </html>

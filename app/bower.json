@@ -1,0 +1,10 @@
+{
+  "name": "willyg-productions-site",
+  "version": "0.1.0",
+  "dependencies": {
+    "requirejs": "~2.1.14",
+    "imagesloaded": "~3.1.8",
+    "isotope": "~2.0.0"
+  },
+  "devDependencies": {}
+}
