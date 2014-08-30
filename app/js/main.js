@@ -12,7 +12,7 @@ require([
 	'imagesloaded',
 	'isotope'
 ], function(imagesLoaded, Isotope) {
-	var container = document.getElementById('iso');
+	var container = document.getElementById('isotope');
 	var iso;
 
 	// Initialize Isotope AFTER images have been loaded
@@ -24,6 +24,7 @@ require([
 				columnWidth: 72  // Magic number: 64 + 2*4 (64 = width of smallest square, 4 = smallest margin)
 			}
 		});
+		document.querySelector('[data-href="' + (window.location.hash || "#") + '"]').click();
 	});
 
 	// Handle expandable tiles
@@ -37,24 +38,16 @@ require([
 			iso.layout();
 		};
 	}
-});
-
-
-/*
-
-$(function() {
 
 	// Filters
-	$('ul.menu > li > a').on('click', function(e) {
-		var self = $(this);
-		e.preventDefault();
-		$('ul.menu').find('a.active').removeClass('active');
-		self.addClass('active');
-		window.location.hash = self.attr('href');
-		$container.isotope({filter: self.attr('data-filter')});
-	});
-
-	// Handle initial hash, if any
-	$('a[href="' + window.location.hash + '"]').trigger('click');
+	var filters = document.querySelectorAll('.nav');
+	for (var i = 0; i < filters.length; i++) {
+		filters[i].onclick = function(e) {
+			e.preventDefault();
+			document.querySelector('.nav.active').classList.remove('active');
+			this.classList.add('active');
+			window.location.hash = this.dataset.href;
+			iso.arrange({filter: this.dataset.filter});
+		};
+	}
 });
-*/

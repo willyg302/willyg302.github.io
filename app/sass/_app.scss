@@ -12,48 +12,13 @@ body {
 }
 
 
-/** HEADER **/
-/*
-.logo {
-	display: inline-block;
-	width: 128px;
-	height: 128px;
-}
-
-#title, #tagline {
-	position: absolute;
-	left: 150px;
-	color: #073642;
-	font-size: 20px;
-	background-color: white;
-	padding: 0 4px 0 4px;
-	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
-}
-
-#title {
-	top: 42px;
-	font-weight: bold;
-}
-
-#tagline {
-	top: 75px;
-}
-
-@media(max-width: 576px) {
-	#title, #tagline {
-		display: none;
-	}
-}
-*/
-
-
 // ISOTOPE
 
-#iso {
+#isotope {
 	padding: $tile-margin * 2;
 }
 
-.isotope:after {
+#isotope:after {
 	content: '';
 	display: block;
 	clear: both;
@@ -93,7 +58,7 @@ body {
 	display: none;
 }
 
-.project, .about, .nav {
+.project, .about {
 	background-color: $color-tile-bg;
 	padding: 10px;
 	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
@@ -124,11 +89,63 @@ p.desc {
 	pointer-events: none;
 }
 
+
+// NAV BUTTONS
+
 .nav {
-	font-size: 24px;
-	text-align: center;
-	padding-top: 14px;
+	font-family: inherit;
+	font-size: inherit;
+	border: 3px solid $color-cobalt;
+	color: $color-cobalt;
+	background: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	overflow: hidden;
+
+	width: $tile2;
+	height: $tile;
+
+	@include transition(color 0.3s);
 }
+
+.nav:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+
+	width: 100%;
+	height: 0;
+	top: 50%;
+	left: 50%;
+	background: $color-cobalt;
+	opacity: 0;
+
+	@include transition(height 0.3s);
+	@include transform(translateX(-50%) translateY(-50%));
+}
+
+.nav:hover,
+.nav:active {
+	color: $color-tile-bg;
+}
+
+.nav:hover:after {
+	height: 75%;
+	opacity: 1;
+}
+
+.nav:active:after {
+	height: 100%;
+	opacity: 1;
+}
+
+.nav.active {
+	color: $color-red;
+}
+
 
 // LANGUAGES
 

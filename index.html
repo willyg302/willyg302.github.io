@@ -18,15 +18,18 @@
 	</script>
 </head>
 <body>
-	<div id="iso" class="row isotope">
+	<div id="isotope">
 
 		<!-- NAV -->
-		<div class="item x-2 y-2"><object height="100%" width="100%" data="dist/img/willyg-logo.svg" type="image/svg+xml"></object></div>
 
-		<div class="item nav x-2 y-1">Home</div>
-		<div class="item nav x-2 y-1">About</div>
-		<div class="item nav x-2 y-1">Projects</div>
-		<div class="item nav x-2 y-1">Contact</div>
+		<div class="item pinned x-2 y-2">
+			<object height="100%" width="100%" data="dist/img/willyg-logo.svg" type="image/svg+xml"></object>
+		</div>
+		<button class="item pinned nav active" data-href="#" data-filter="*">Home</button>
+		<button class="item pinned nav" data-href="#about" data-filter=".pinned, .about">About</button>
+		<button class="item pinned nav" data-href="#projects" data-filter=".pinned, .project">Projects</button>
+		<button class="item pinned nav" data-href="#contact" data-filter=".pinned, .social">Contact</button>
+
 
 		<!-- ABOUT -->
 
