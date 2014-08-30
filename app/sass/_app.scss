@@ -11,17 +11,14 @@ body {
 	font-family: $font;
 }
 
-
-// ISOTOPE
-
 #isotope {
 	padding: $tile-margin * 2;
-}
 
-#isotope:after {
-	content: '';
-	display: block;
-	clear: both;
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
 }
 
 
@@ -33,16 +30,11 @@ body {
 	width: $tile;
 	height: $tile;
 	margin: $tile-margin;
-}
 
-.item > * {
-	margin: 0;
-	padding: 0;
-}
-
-.project {
-	width: $tile4;
-	height: $tile2;
+	> * {
+		margin: 0;
+		padding: 0;
+	}
 }
 
 .x-1 { width:  $tile; }
@@ -58,35 +50,41 @@ body {
 	display: none;
 }
 
-.project, .about {
+.about {
 	background-color: $color-tile-bg;
 	padding: 10px;
 	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
-.project a {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
+.project {
+	@extend .about;
+	width: $tile4;
+	height: $tile2;
+
+	a {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 0;
+		height: 0;
+		border-bottom: 32px solid transparent;
+		border-left: 32px solid transparent;
+		border-right: 32px solid $color-no-lang;
+		pointer-events: none;
+	}
 }
 
 p.desc {
 	margin-top: 8px;
-}
-
-.project:after {
-	content: '';
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 0;
-	height: 0;
-	border-bottom: 32px solid transparent;
-	border-left: 32px solid transparent;
-	border-right: 32px solid $color-no-lang;
-	pointer-events: none;
 }
 
 
@@ -109,41 +107,43 @@ p.desc {
 	height: $tile;
 
 	@include transition(color 0.3s);
-}
 
-.nav:after {
-	content: '';
-	position: absolute;
-	z-index: -1;
+	&:after {
+		content: '';
+		position: absolute;
+		z-index: -1;
 
-	width: 100%;
-	height: 0;
-	top: 50%;
-	left: 50%;
-	background: $color-cobalt;
-	opacity: 0;
+		width: 100%;
+		height: 0;
+		top: 50%;
+		left: 50%;
+		background: $color-cobalt;
 
-	@include transition(height 0.3s);
-	@include transform(translateX(-50%) translateY(-50%));
-}
+		@include transition(height 0.3s);
+		@include transform(translateX(-50%) translateY(-50%));
+	}
 
-.nav:hover,
-.nav:active {
-	color: $color-tile-bg;
-}
+	&:hover {
+		color: $color-tile-bg !important;
 
-.nav:hover:after {
-	height: 75%;
-	opacity: 1;
-}
+		&:after {
+			height: 75%;
+			opacity: 1;
+		}
+	}
 
-.nav:active:after {
-	height: 100%;
-	opacity: 1;
-}
+	&:active {
+		color: $color-tile-bg !important;
 
-.nav.active {
-	color: $color-red;
+		&:after {
+			height: 100%;
+			opacity: 1;
+		}
+	}
+
+	&.active {
+		color: $color-red;
+	}
 }
 
 
