@@ -1,8 +1,8 @@
 require.config({
 	packages: [],
 	paths: {
-		'imagesloaded'      : '../bower_components/imagesloaded/imagesloaded.pkgd',
-		'isotope'           : '../bower_components/isotope/dist/isotope.pkgd'
+		'imagesloaded': '../bower_components/imagesloaded/imagesloaded.pkgd',
+		'isotope'     : '../bower_components/isotope/dist/isotope.pkgd'
 	},
 	shim: {
 	}
@@ -33,7 +33,7 @@ require([
 		expandables[i].onclick = function() {
 			this.classList.toggle(this.dataset.x);
 			this.classList.toggle(this.dataset.y);
-			var content = this.querySelector('#content');
+			var content = this.getElementsByClassName('content')[0];
 			content.style.display = (content.style.display === 'block' ? 'none' : 'block');
 			iso.layout();
 		};

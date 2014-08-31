@@ -46,7 +46,7 @@ body {
 .x-6 { width:  $tile6; }
 .y-6 { height: $tile6; }
 
-.expandable #content {
+.expandable .content {
 	display: none;
 }
 
@@ -123,26 +123,28 @@ p.desc {
 		@include transform(translateX(-50%) translateY(-50%));
 	}
 
-	&:hover {
-		color: $color-tile-bg !important;
+	&:hover, &:focus {
+		color: $color-tile-bg;
 
 		&:after {
 			height: 75%;
-			opacity: 1;
 		}
 	}
 
 	&:active {
-		color: $color-tile-bg !important;
+		color: $color-tile-bg;
 
 		&:after {
 			height: 100%;
-			opacity: 1;
 		}
 	}
 
 	&.active {
-		color: $color-red;
+		color: $color-red !important;
+
+		&:after {
+			height: 0 !important;
+		}
 	}
 }
 
