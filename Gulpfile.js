@@ -1,19 +1,19 @@
 var gulp       = require('gulp');
 var clean      = require('gulp-clean');
+var less       = require('gulp-less');
 var minifycss  = require('gulp-minify-css');
 var requirejs  = require('gulp-requirejs');
-var sass       = require('gulp-sass');
 var uglify     = require('gulp-uglify');
 
 var paths = {
 	requireJSIncludes: ['../bower_components/requirejs/require.js'],
-	assets: ['./app/img/**/*.*'],
-	js: './app/js',
-	jsmain: 'main.js',
-	css: './app/sass',
-	cssmain: 'main.scss',
+	assets: [
+		'./app/img/**/*.*'
+	],
 	app: './app',
-	dist: './dist'
+	dist: './dist',
+	js: './app/js',
+	css: './app/less'
 };
 
 gulp.task('clean', function() {
@@ -29,8 +29,8 @@ gulp.task('copy-assets', function() {
 gulp.task('compile-js', function() {
 	requirejs({
 		baseUrl: paths.js,
-		mainConfigFile: paths.js + "/" + paths.jsmain,
-		out: paths.jsmain,
+		mainConfigFile: paths.js + "/main.js",
+		out: 'main.js',
 		name: 'main',
 		findNestedDependencies: true,
 		waitSeconds: 10,
@@ -43,8 +43,8 @@ gulp.task('compile-js', function() {
 });
 
 gulp.task('compile-css', function() {
-	return gulp.src(paths.css + "/" + paths.cssmain)
-		.pipe(sass())
+	return gulp.src(paths.css + "/main.less")
+		.pipe(less())
 		.pipe(minifycss())
 		.pipe(gulp.dest(paths.dist));
 });
