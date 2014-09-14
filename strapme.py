@@ -1,9 +1,8 @@
 project = 'WillyG Productions Site'
 
 def _npm_bower(command):
-	strap.run('npm {}'.format(command))
-	with strap.root('app'):
-		strap.run('bower {}'.format(command))
+	strap.npm(command)
+	strap.bower(command, root='app')
 
 def clean():
 	_npm_bower('prune')
@@ -13,4 +12,4 @@ def install():
 	_npm_bower('install')
 
 def default():
-	strap.run('node_modules/.bin/gulp')
+	strap.node('gulp', module=True)
