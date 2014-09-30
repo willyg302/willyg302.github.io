@@ -1,29 +1,10 @@
-*,
-*:after,
-*::before {
-	.box-sizing(border-box);
-}
-
 html {
 	background: url("img/bg.png") repeat;
 }
 
 body {
 	margin: 0;
-	font-family: @font;
 	background-color: none;
-}
-
-h2, h4 {
-	font-weight: bold;
-}
-
-h2 {
-	font-size: 24px;
-}
-
-h4 {
-	font-size: 16px;
 }
 
 #isotope {
@@ -46,9 +27,13 @@ h4 {
 	height: @tile;
 	margin: @tile-margin;
 
-	> * {
-		margin: 0;
-		padding: 0;
+	h1 {
+		margin-top: 0;
+	}
+
+	h2, h3, h4, h5, h6 {
+		margin-top: 0;
+		font-weight: bold;
 	}
 }
 
@@ -68,7 +53,7 @@ h4 {
 .about {
 	background-color: @color-tile-bg;
 	padding: 10px;
-	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+	.box-shadow(0px 0px 5px 1px rgba(0, 0, 0, 0.1));
 }
 
 .project {
@@ -87,8 +72,8 @@ h4 {
 	&:after {
 		content: '';
 		position: absolute;
-		right: 0;
 		top: 0;
+		right: 0;
 		width: 0;
 		height: 0;
 		border-bottom: 32px solid transparent;
@@ -102,23 +87,18 @@ h4 {
 	background: @color-tile-bg;
 }
 
-p.desc {
-	margin-top: 8px;
-}
-
 
 // NAV BUTTONS
 
 .nav {
 	font-family: inherit;
-	font-size: 18px;
+	font-size: @font-size-large;
+	font-weight: bold;
 	border: 3px solid @color-cobalt;
 	color: @color-cobalt;
 	background: none;
 	cursor: pointer;
 	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-weight: 700;
 	outline: none;
 	overflow: hidden;
 
