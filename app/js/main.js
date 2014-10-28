@@ -24,7 +24,7 @@ require([
 				columnWidth: 72  // Magic number: 64 + 2*4 (64 = width of smallest square, 4 = smallest margin)
 			}
 		});
-		document.querySelector('[data-href="' + (window.location.hash || "#") + '"]').click();
+		document.querySelector('[href="' + (window.location.hash || "#") + '"]').click();
 	});
 
 	// Handle expandable tiles
@@ -40,14 +40,18 @@ require([
 	}
 
 	// Filters
-	var filters = document.querySelectorAll('.nav');
+	var filters = document.querySelectorAll('.nav > a');
 	for (var i = 0; i < filters.length; i++) {
+		if (filters[i].dataset.filter === undefined) {
+			continue;
+		}
 		filters[i].onclick = function(e) {
 			e.preventDefault();
-			document.querySelector('.nav.active').classList.remove('active');
+			document.querySelector('.nav .active').classList.remove('active');
 			this.classList.add('active');
-			window.location.hash = this.dataset.href;
+			window.location.hash = this.href.substring(this.href.indexOf('#'));
 			iso.arrange({filter: this.dataset.filter});
+			return false;
 		};
 	}
 });
