@@ -2,3 +2,11 @@
 .DS_Store
 node_modules/
 bower_components/
+
+# Resume
+resume/*
+!willyg-logo.png
+!moderncv*
+!tweaklist.sty
+!William_Gaul_CV.pdf
+!William_Gaul_CV.tex
