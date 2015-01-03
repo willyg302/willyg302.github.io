@@ -1,24 +1,26 @@
 var gulp       = require('gulp');
-var clean      = require('gulp-clean');
 var less       = require('gulp-less');
 var minifycss  = require('gulp-minify-css');
-var requirejs  = require('gulp-requirejs');
 var uglify     = require('gulp-uglify');
 
+var browserify = require('browserify');
+var del        = require('del');
+var buffer     = require('vinyl-buffer');
+var vinyl      = require('vinyl-source-stream');
+
+
 var paths = {
-	requireJSIncludes: ['../bower_components/requirejs/require.js'],
 	assets: [
 		'./app/img/**/*.*'
 	],
 	app: './app',
 	dist: './dist',
-	js: './app/js',
-	css: './app/less'
+	css: './app/less/main.less',
+	js: './app/js/main.js'
 };
 
-gulp.task('clean', function() {
-	return gulp.src(paths.dist, {read: false})
-		.pipe(clean());
+gulp.task('clean', function(cb) {
+	del(paths.dist, cb);
 });
 
 gulp.task('copy-assets', function() {
@@ -26,29 +28,22 @@ gulp.task('copy-assets', function() {
 		.pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('compile-js', function() {
-	requirejs({
-		baseUrl: paths.js,
-		mainConfigFile: paths.js + "/main.js",
-		out: 'main.js',
-		name: 'main',
-		findNestedDependencies: true,
-		waitSeconds: 10,
-		wrapShim: true,
-		wrap: true,
-		include: paths.requireJSIncludes
-	})
-		.pipe(uglify())
-		.pipe(gulp.dest(paths.dist));
-});
-
 gulp.task('compile-css', function() {
-	return gulp.src(paths.css + "/main.less")
+	return gulp.src(paths.css)
 		.pipe(less())
 		.pipe(minifycss())
 		.pipe(gulp.dest(paths.dist));
 });
 
+gulp.task('compile-js', function() {
+	return browserify(paths.js)
+		.bundle()
+		.pipe(vinyl('main.js'))
+		.pipe(buffer())
+		.pipe(uglify())
+		.pipe(gulp.dest(paths.dist));
+});
+
 gulp.task('default', ['clean'], function() {
-	gulp.start('copy-assets', 'compile-js', 'compile-css');
+	gulp.start('copy-assets', 'compile-css', 'compile-js');
 });

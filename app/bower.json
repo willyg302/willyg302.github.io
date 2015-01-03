@@ -1,10 +1,9 @@
 {
   "name": "willyg-productions-site",
   "version": "0.1.0",
+  "homepage": "http://willyg302.github.io/",
+  "private": true,
   "dependencies": {
-    "requirejs": "~2.1.14",
-    "imagesloaded": "~3.1.8",
-    "isotope": "~2.0.0",
     "bootstrap": "~3.2.0"
   },
   "devDependencies": {}
