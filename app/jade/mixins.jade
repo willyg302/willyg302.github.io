@@ -1,0 +1,22 @@
+mixin tile(x, y)
+	- var classes = ['item']
+	- if (typeof x !== 'undefined') { classes.push("x-" + x); }
+	- if (typeof y !== 'undefined') { classes.push("y-" + y); }
+	div(class=classes)&attributes(attributes)
+		block
+
+mixin expandable(x, y, expandX, expandY)
+	+tile(x, y)(class='expandable', data-x='x-#{expandX}', data-y='y-#{expandY}')&attributes(attributes)
+		block
+
+mixin social(name, link)
+	- var sanitized = name.toLowerCase().replace(' ', '-')
+	+tile()(class='social')
+		a(href=link, title=name)
+			img(src='dist/img/icon-#{sanitized}.svg')
+
+mixin project(name, info)
+	+tile()(class='project #{info.language}')
+		a(href=info.link)
+		h3.title= name
+		p!= info.description

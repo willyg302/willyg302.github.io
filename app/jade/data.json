@@ -1,0 +1,61 @@
+{
+	"languages": [
+		"Python",
+		"JavaScript",
+		"Java",
+		"UnrealScript",
+		"Elixir",
+		"Erlang",
+		"Clojure",
+		"Go",
+		"CoffeeScript",
+		"LaTeX"
+	],
+	"profiles": {
+		"GitHub": "https://github.com/willyg302",
+		"LinkedIn": "http://www.linkedin.com/pub/william-gaul/79/8b1/507",
+		"Email": "mailto:willyg302@gmail.com",
+		"Stack Overflow": "http://stackoverflow.com/users/2749401/william-gaul",
+		"WordPress": "http://willyg302.wordpress.com/",
+		"YouTube": "http://www.youtube.com/user/willyg302",
+		"Hacker News": "https://news.ycombinator.com/user?id=willyg302",
+		"Facebook": "https://www.facebook.com/WillygProductions"
+	},
+	"projects": {
+		"ok": {
+			"language": "python",
+			"link": "https://github.com/willyg302/ok",
+			"description": "Make for stupid people: a simple tool for cloning, copying, and initializing projects"
+		},
+		"Noat": {
+			"language": "javascript",
+			"link": "https://github.com/willyg302/Noat",
+			"description": "A dead-simple app for CRUD-ing tiny bits of information, powered by Google App Engine"
+		},
+		"clip.py": {
+			"language": "python",
+			"link": "https://github.com/willyg302/clip.py",
+			"description": "Embeddable, composable <strong>c</strong>ommand <strong>l</strong>ine <strong>i</strong>nterface <strong>p</strong>arsing"
+		},
+		"supers.py": {
+			"language": "python",
+			"link": "https://github.com/willyg302/supers.py",
+			"description": "Watch JSON objects like James Bond"
+		},
+		"Sagittarius": {
+			"language": "unrealscript",
+			"link": "http://willyg302.github.io/Sagittarius/",
+			"description": "Visit the wiki for Sagittarius, a free online game service built on Google App Engine"
+		},
+		"Dave Likes Pizza": {
+			"language": "javascript",
+			"link": "http://willyg302.github.io/Dave-Likes-Pizza/",
+			"description": "An HTML5 game written in JavaScript over the course of one week"
+		},
+		"jarvis": {
+			"language": "elixir",
+			"link": "https://github.com/skoldpadda/jarvis",
+			"description": "Just A Really Very Idiotic Shell"
+		}
+	}
+}

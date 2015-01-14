@@ -1,0 +1,64 @@
+extends ./base.jade
+include ./mixins.jade
+
+append head
+	link(rel='stylesheet', type='text/css', href='dist/main.css')
+
+append footer
+	script(type='text/javascript', src='dist/main.js')
+
+block content
+	#isotope
+		+tile(4, 6)(class='pinned')
+			object(type='image/svg+xml', data='dist/img/willyg-site-logo.svg')
+			p.colophon I am a software artist. I dream of a world in which programs work together to achieve the impossible, and am currently doing whatever I can to make that dream a reality.
+			.nav
+				a.active(href='#', data-filter='*') Home
+				a(href='/blog') Blog
+				a(href='#projects', data-filter='.pinned, .project') Projects
+				a(href='#about', data-filter='.pinned, .about') About
+				a(href='#contact', data-filter='.pinned, .social') Contact
+
+		//- ABOUT
+		+tile(2, 4)(class='about')
+			h4 Languages
+			p
+				each val in languages
+					= val
+					br
+
+		+expandable(2, 2, 4, 4)(class='about')
+			h4 SDE Intern
+			small May 2014 - August 2014
+			.content
+				p
+					| Where: 
+					strong Amazon.com
+				p: ul
+					li Created an internal operations dashboard to aid in service monitoring and troubleshooting
+					li Bootstrapped the design and production of an AWS service console
+
+		+expandable(2, 2, 4, 4)(class='about')
+			h4 Research Assistant
+			small January 2013 - May 2014
+			.content
+				p
+					| Where: 
+					strong HICHI Lab
+				p: ul
+					li
+						| Created 
+						a(href='https://github.com/willyg302/Twitterator') a tool
+						|  to allow for automated, remote collection of Twitter data
+					li
+						| Designed and coded 
+						a(href='https://github.com/willyg302/Poli') user interface solutions
+						|  for research in the political sphere
+
+		//- SOCIAL
+		each val, key in profiles
+			+social(key, val)
+
+		//- PROJECTS
+		each val, key in projects
+			+project(key, val)
