@@ -5,6 +5,7 @@ var minifycss  = require('gulp-minify-css');
 var uglify     = require('gulp-uglify');
 
 var browserify = require('browserify');
+var coffeeify  = require('coffeeify');
 var del        = require('del');
 var fs         = require('fs');
 var buffer     = require('vinyl-buffer');
@@ -18,7 +19,7 @@ var paths = {
 	app: './app',
 	dist: './dist',
 	css: './app/less/main.less',
-	js: './app/js/main.js',
+	js: './app/js/main.coffee',
 	index: './app/jade/index.jade',
 	templateData: './app/jade/data.json'
 };
@@ -41,6 +42,7 @@ gulp.task('compile-css', function() {
 
 gulp.task('compile-js', function() {
 	return browserify(paths.js)
+		.transform(coffeeify)
 		.bundle()
 		.pipe(vinyl('main.js'))
 		.pipe(buffer())
