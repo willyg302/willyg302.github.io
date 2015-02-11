@@ -4,11 +4,11 @@
 		"JavaScript",
 		"Java",
 		"UnrealScript",
+		"CoffeeScript",
 		"Elixir",
 		"Erlang",
 		"Clojure",
 		"Go",
-		"CoffeeScript",
 		"LaTeX"
 	],
 	"profiles": {
@@ -36,6 +36,11 @@
 			"language": "python",
 			"link": "https://github.com/willyg302/clip.py",
 			"description": "Embeddable, composable <strong>c</strong>ommand <strong>l</strong>ine <strong>i</strong>nterface <strong>p</strong>arsing"
+		},
+		"antsy": {
+			"language": "python",
+			"link": "https://github.com/willyg302/antsy",
+			"description": "Sweet interpolated ANSI strings"
 		},
 		"supers.py": {
 			"language": "python",
