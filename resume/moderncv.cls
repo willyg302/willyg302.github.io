@@ -1,16 +1,12 @@
-%% start of file `moderncv.cls'.
 %% Copyright 2006-2012 Xavier Danaux (xdanaux@gmail.com).
+%% Modified by willyg302.
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License version 1.3c,
 % available at http://www.latex-project.org/lppl/.
 
-
-%-------------------------------------------------------------------------------
-%                identification
-%-------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{moderncv}[2012/10/31 v1.2.0 modern curriculum vitae and letter document class]
+\ProvidesClass{moderncv}[2012/10/31 v1.2.0 modern curriculum vitae document class]
 
 
 %-------------------------------------------------------------------------------
@@ -22,27 +18,23 @@
 %-------------------------------------------------------------------------------
 % paper size option
 \DeclareOption{a4paper}{
-  \setlength\paperheight{297mm}
-  \setlength\paperwidth{210mm}}
+	\setlength\paperheight{297mm}
+	\setlength\paperwidth{210mm}}
 \DeclareOption{a5paper}{
-  \setlength\paperheight{210mm}
-  \setlength\paperwidth{148mm}}
+	\setlength\paperheight{210mm}
+	\setlength\paperwidth{148mm}}
 \DeclareOption{b5paper}{
-  \setlength\paperheight{250mm}
-  \setlength\paperwidth{176mm}}
+	\setlength\paperheight{250mm}
+	\setlength\paperwidth{176mm}}
 \DeclareOption{letterpaper}{
-  \setlength\paperheight{11in}
-  \setlength\paperwidth{8.5in}}
+	\setlength\paperheight{11in}
+	\setlength\paperwidth{8.5in}}
 \DeclareOption{legalpaper}{
-  \setlength\paperheight{14in}
-  \setlength\paperwidth{8.5in}}
+	\setlength\paperheight{14in}
+	\setlength\paperwidth{8.5in}}
 \DeclareOption{executivepaper}{
-  \setlength\paperheight{10.5in}
-  \setlength\paperwidth{7.25in}}
-\DeclareOption{landscape}{
-  \setlength\@tempdima{\paperheight}
-  \setlength\paperheight{\paperwidth}
-  \setlength\paperwidth{\@tempdima}}
+	\setlength\paperheight{10.5in}
+	\setlength\paperwidth{7.25in}}
 
 % font size options
 \newcommand\@ptsize{}
@@ -71,10 +63,6 @@
 %-------------------------------------------------------------------------------
 % \AtEndPreamble hook (loading etoolbox instead of defining the macro, as to avoid incompatibilities with etoolbox (and packages relying on it) defining the macro too)
 \RequirePackage{etoolbox}
-%\let\@endpreamblehook\@empty
-%\def\AtEndPreamble{\g@addto@macro\@endpreamblehook}
-%\let\document@original\document
-%\def\document{\endgroup\@endpreamblehook\begingroup\document@original}
 
 % if... then... else... constructs
 \RequirePackage{ifthen}
@@ -83,62 +71,38 @@
 % color
 \RequirePackage{xcolor}
 
-% font loading
-%\usepackage{ifxetex,ifluatex}
-%\newif\ifxetexorluatex
-%\ifxetex
-%  \xetexorluatextrue
-%\else
-%  \ifluatex
-%    \xetexorluatextrue
-%  \else
-%    \xetexorluatexfalse
-%  \fi
-%\fi
-% automatic loading of latin modern fonts
-%\ifxetexorluatex
-%  \RequirePackage{fontspec}
-%  \defaultfontfeatures{Ligatures=TeX}
-%  \RequirePackage{unicode-math}
-%  \setmainfont{Latin Modern}
-%  \setsansfont{Latin Modern Sans}
-%  \setmathfont{Latin Modern Math}
-%\else
-  \RequirePackage[T1]{fontenc}
-  \IfFileExists{lmodern.sty}%
-    {\RequirePackage{lmodern}}%
-    {}
-%\fi
+
+	\RequirePackage[T1]{fontenc}
+	\IfFileExists{lmodern.sty}%
+		{\RequirePackage{lmodern}}%
+		{}
 
 % MarVoSym font for symbols
 %\RequirePackage{marvosym}
 \newcommand*{\marvosymbol}[1]{}
-%\ifxetexorluatex
-%  \renewcommand*{\marvosymbol}[1]{{\fontspec{MarVoSym}\char#1}}
-%\else
-  \renewcommand*{\marvosymbol}[1]{{\fontfamily{mvs}\fontencoding{U}\fontseries{m}\fontshape{n}\selectfont\char#1}}
-%\fi
+
+	\renewcommand*{\marvosymbol}[1]{{\fontfamily{mvs}\fontencoding{U}\fontseries{m}\fontshape{n}\selectfont\char#1}}
 
 % hyper links (hyperref is loaded at the end of the preamble to pass options required by loaded packages such as CJK)
 \RequirePackage{url}
 \urlstyle{tt}
 \AtEndPreamble{
-  \pagenumbering{arabic}% has to be issued before loading hyperref, as to set \thepage and hence to avoid hyperref issuing a warning and setting pdfpagelabels=false
-  \RequirePackage[unicode]{hyperref}% unicode is required for unicode pdf metadata
-  \hypersetup{
-    breaklinks,
-    baseurl       = http://,
-    pdfborder     = 0 0 0,
-    pdfpagemode   = UseNone,% do not show thumbnails or bookmarks on opening
-    pdfstartpage  = 1,
-    pdfcreator    = {\LaTeX{} with 'moderncv' package},
+	\pagenumbering{arabic}% has to be issued before loading hyperref, as to set \thepage and hence to avoid hyperref issuing a warning and setting pdfpagelabels=false
+	\RequirePackage[unicode]{hyperref}% unicode is required for unicode pdf metadata
+	\hypersetup{
+		breaklinks,
+		baseurl       = http://,
+		pdfborder     = 0 0 0,
+		pdfpagemode   = UseNone,% do not show thumbnails or bookmarks on opening
+		pdfstartpage  = 1,
+		pdfcreator    = {\LaTeX{} with 'moderncv' package},
 %    pdfproducer   = {\LaTeX{}},% will/should be set automatically to the correct TeX engine used
-    bookmarksopen = true,
-    bookmarksdepth= 2,% to show sections and subsections
-    pdfauthor     = {\@firstname{}~\@familyname{}},
-    pdftitle      = {\@firstname{}~\@familyname{} -- \@title{}},
-    pdfsubject    = {Resum\'{e} of \@firstname{}~\@familyname{}},
-    pdfkeywords   = {\@firstname{}~\@familyname{}, curriculum vit\ae{}, resum\'{e}}}}
+		bookmarksopen = true,
+		bookmarksdepth= 2,% to show sections and subsections
+		pdfauthor     = {\@firstname{}~\@familyname{}},
+		pdftitle      = {\@firstname{}~\@familyname{} -- \@title{}},
+		pdfsubject    = {Resum\'{e} of \@firstname{}~\@familyname{}},
+		pdfkeywords   = {\@firstname{}~\@familyname{}, curriculum vit\ae{}, resum\'{e}}}}
 
 % graphics
 \RequirePackage{graphicx}
@@ -146,23 +110,23 @@
 % headers and footers
 \RequirePackage{fancyhdr}
 \fancypagestyle{plain}{
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
-  \fancyhf{}}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+	\fancyhf{}}
 % page numbers in footer if more than 1 page
 \newif\if@displaypagenumbers\@displaypagenumberstrue
 \newcommand*{\nopagenumbers}{\@displaypagenumbersfalse}
 \AtEndPreamble{%
-  \AtBeginDocument{%
-    \if@displaypagenumbers%
-      \@ifundefined{r@lastpage}{}{%
-        \ifthenelse{\pageref{lastpage}>1}{%
-          \newlength{\pagenumberwidth}%
-          \settowidth{\pagenumberwidth}{\color{color2}\addressfont\itshape\strut\thepage/\pageref{lastpage}}%
-          \fancypagestyle{plain}{%
-            \fancyfoot[r]{\parbox[b]{\pagenumberwidth}{\color{color2}\addressfont\itshape\strut\thepage/\pageref{lastpage}}}}% the parbox is required to ensure alignment with a possible center footer (e.g., as in the casual style)
-          \pagestyle{plain}}{}}%
-      \AtEndDocument{\label{lastpage}}\else\fi}}
+	\AtBeginDocument{%
+		\if@displaypagenumbers%
+			\@ifundefined{r@lastpage}{}{%
+				\ifthenelse{\pageref{lastpage}>1}{%
+					\newlength{\pagenumberwidth}%
+					\settowidth{\pagenumberwidth}{\color{color2}\addressfont\itshape\strut\thepage/\pageref{lastpage}}%
+					\fancypagestyle{plain}{%
+						\fancyfoot[r]{\parbox[b]{\pagenumberwidth}{\color{color2}\addressfont\itshape\strut\thepage/\pageref{lastpage}}}}% the parbox is required to ensure alignment with a possible center footer (e.g., as in the casual style)
+					\pagestyle{plain}}{}}%
+			\AtEndDocument{\label{lastpage}}\else\fi}}
 \pagestyle{plain}
 
 % lengths calculations
@@ -175,8 +139,6 @@
 % micro-typography (e.g., character protrusion, font expansion, hyphenatable letterspacing)
 \RequirePackage{microtype}
 
-% compatibility package with older versions of moderncv
-\RequirePackageWithOptions{moderncvcompatibility}
 
 
 %-------------------------------------------------------------------------------
@@ -194,11 +156,6 @@
 \setlength\fboxrule{.4\p@}
 \setlength\arrayrulewidth{.4\p@}
 \setlength\doublerulesep{2\p@}
-
-% not set on purpose
-%\setlength\arraycolsep{5\p@}
-%\setlength\tabcolsep{6\p@}
-%\setlength\tabbingsep{\labelsep}
 
 \raggedbottom
 \onecolumn
@@ -257,11 +214,11 @@
 
 % loads a style scheme
 \newcommand*{\moderncvstyle}[1]{
-  \RequirePackage{moderncvstyle#1}}
-  
+	\RequirePackage{moderncvstyle#1}}
+
 % loads a color scheme
 \newcommand*{\moderncvcolor}[1]{
-  \RequirePackage{moderncvcolor#1}}
+	\RequirePackage{moderncvcolor#1}}
 
 % recomputes all automatic lengths
 \newcommand*{\recomputelengths}{\recomputecvlengths}
@@ -269,7 +226,7 @@
 
 % creates a length if not yet defined
 \newcommand*{\@initializelength}[1]{%
-  \ifdefined#1\else\newlength{#1}\fi}
+	\ifdefined#1\else\newlength{#1}\fi}
 
 
 %-------------------------------------------------------------------------------
@@ -304,11 +261,11 @@
 % internal maketitle command to issue a new line only when required
 \newif\if@firstdetailselement\@firstdetailselementtrue
 \newcommand*{\makenewline}{
-  \if@firstdetailselement%
-    \strut% to ensure baseline alignment, e.g. with when put in the margin vs sections that also contains a \strut
-  \else%
-    \\\fi%
-  \@firstdetailselementfalse}
+	\if@firstdetailselement%
+		\strut% to ensure baseline alignment, e.g. with when put in the margin vs sections that also contains a \strut
+	\else%
+		\\\fi%
+	\@firstdetailselementfalse}
 
 % makes the resume title
 % usage: \makecvtitle
@@ -357,23 +314,23 @@
 % makes a generic hyperlink
 % usage: \link[optional text]{link}
 \newcommand*{\link}[2][]{%
-  \ifthenelse{\equal{#1}{}}%
-    {\href{#2}{#2}}%
-    {\href{#2}{#1}}}
+	\ifthenelse{\equal{#1}{}}%
+		{\href{#2}{#2}}%
+		{\href{#2}{#1}}}
 
 % makes a http hyperlink
 % usage: \httplink[optional text]{link}
 \newcommand*{\httplink}[2][]{%
-  \ifthenelse{\equal{#1}{}}%
-    {\href{http://#2}{#2}}%
-    {\href{http://#2}{#1}}}
+	\ifthenelse{\equal{#1}{}}%
+		{\href{http://#2}{#2}}%
+		{\href{http://#2}{#1}}}
 
 % makes an email hyperlink
 % usage: \emaillink[optional text]{link}
 \newcommand*{\emaillink}[2][]{%
-  \ifthenelse{\equal{#1}{}}%
-    {\href{mailto:#2}{#2}}%
-    {\href{mailto:#2}{#1}}}
+	\ifthenelse{\equal{#1}{}}%
+		{\href{mailto:#2}{#2}}%
+		{\href{mailto:#2}{#1}}}
 
 % thebibliography environment, for use with BibTeX and possibly multibib
 \newlength{\bibindent}
@@ -415,56 +372,18 @@
 % hooks to adjust spacing (idea by Jakob Schiøtz; see http://dcwww.camd.dtu.dk/~schiotz/comp/LatexTips/tweaklist.sty)
 \RequirePackage{tweaklist}% distributed with moderncv, not found on ctan and slightly modified
 \renewcommand*{\itemhook}{
-  \setlength{\topsep}{0pt}%
-  \setlength{\parsep}{0pt}%
-  \setlength{\parskip}{0pt}%
-  \setlength{\itemsep}{0pt}}
+	\setlength{\topsep}{0pt}%
+	\setlength{\parsep}{0pt}%
+	\setlength{\parskip}{0pt}%
+	\setlength{\itemsep}{0pt}}
 \renewcommand*{\enumhook}{\itemhook{}}
 \renewcommand*{\deschook}{\itemhook{}}
 
 % classical \today definition
 \def\today{\ifcase\month\or
-  January\or February\or March\or April\or May\or June\or
-  July\or August\or September\or October\or November\or December\fi
-  \space\number\day, \number\year}
-
-%\newcommand{\widthofautobox}[1]{%
-%  \widthof{\begin{tabular}{@{}l@{}}#1\end{tabular}}}
-
-%\newcommand{\autobox}[2][b]{%
-%  \parbox[#1]{\widthofautobox{#2}}{#2}}
-
-
-%-------------------------------------------------------------------------------
-%                letter design commands definitions
-%-------------------------------------------------------------------------------
-% elements
-\newcommand*{\recipient}[2]{\def\@recipientname{#1}\def\@recipientaddress{#2}}
-\renewcommand*{\date}[1]{\def\@date{#1}}\date{\today}
-\newcommand*{\opening}[1]{\def\@opening{#1}}
-\newcommand*{\closing}[1]{\def\@closing{#1}}
-\newcommand*{\enclosure}[2][]{%
-  % if an optional argument is provided, use it to redefine \enclname
-  \ifthenelse{\equal{#1}{}}{}{\renewcommand*{\enclname}{#1}}%
-  \def\@enclosure{#2}}
-
-% recompute all letter lengths
-\newcommand*{\recomputeletterlengths}{}
-
-% makes the letter title
-% usage: \makelettertitle
-\newcommand*{\makelettertitle}{}
-
-% makes the letter footer
-% usage: \makeletterfooter
-\newcommand*{\makeletterfooter}{\makefooter}
-
-% makes the letter closing
-% usage: \makeletterclosing
-\newcommand*{\makeletterclosing}{}
+	January\or February\or March\or April\or May\or June\or
+	July\or August\or September\or October\or November\or December\fi
+	\space\number\day, \number\year}
 
 
 \endinput
-
-
-%% end of file `moderncv.cls'.

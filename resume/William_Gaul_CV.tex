@@ -1,6 +1,6 @@
-% Author: William Gaul
-\documentclass[11pt,a4paper]{moderncv}
-\moderncvtheme[red]{classic}
+\documentclass[11pt,letterpaper,final]{moderncv}
+\moderncvcolor{red}
+\moderncvstyle{classic}
 \nopagenumbers{}
 
 \usepackage[utf8]{inputenc}
@@ -22,14 +22,20 @@
 
 \section{Experience}
 
-\cventry{May 2014 -- August 2014}{Software Development Engineer Intern}{Amazon.com}{Seattle}{}{
+%\cventry{Feb 2015 -- Present}{Software Development Engineer}{AWS Lambda}{Seattle}{}{
+%	\begin{itemize}
+%		\item @TODO
+%	\end{itemize}
+%}
+
+\cventry{May 2014 -- Aug 2014}{Software Development Engineer Intern}{Amazon Web Services}{Seattle}{}{
 	\begin{itemize}
 		\item Created an internal operations dashboard to aid in service monitoring and troubleshooting
 		\item Bootstrapped the design and production of an AWS service console
 	\end{itemize}
 }
 
-\cventry{January 2013 -- May 2014}{Research Assistant}{Hawaii Computer-Human Interaction Lab}{Honolulu}{}{
+\cventry{Jan 2013 -- May 2014}{Research Assistant}{Hawaii Computer-Human Interaction Lab}{Honolulu}{}{
 	\begin{itemize}
 		\item Created a tool to allow for automated, remote collection of Twitter data
 		\item Designed and coded user interface solutions for research in the political sphere
@@ -44,9 +50,10 @@
 	\end{itemize}
 }
 
+
 \section{Education}
 
-\cventry{August 2011 -- December 2014}{University of Hawai`i at Manoa}{Honolulu, Hawaii}{}{}{
+\cventry{Aug 2011 -- Dec 2014}{University of Hawai`i at Manoa}{Honolulu, Hawaii}{}{}{
 	\begin{itemize}
 		\item Regents Scholar and \emph{summa cum laude}, 4.0 GPA
 		\item BS in Information and Computer Sciences (ICS)
@@ -54,7 +61,7 @@
 	\end{itemize}
 }
 
-\cventry{July 2007 -- May 2011}{Mililani High School}{Mililani, Hawaii}{}{}{
+\cventry{Jul 2007 -- May 2011}{Mililani High School}{Mililani, Hawaii}{}{}{
 	\begin{itemize}
 		\item Valedictorian, 4.16 GPA on 4.0 scale
 		\item Mu Alpha Theta Honorary Association member
@@ -62,22 +69,23 @@
 	\end{itemize}
 }
 
+
 \section{Software Skills}
 
-\cvline{Programming}{
+\cvitem{Programming}{
 	\textbf{Experienced}: Python, JavaScript, Java, UnrealScript\newline
 	\textbf{Has used}: CoffeeScript, Elixir, Erlang, Clojure, Go, \LaTeX
 }
-\cvline{Web Design}{React, AngularJS, Flask, Node.js, Google App Engine, Meteor, Tornado}
-\cvline{Databases}{BigTable, MySQL, SQLite, MongoDB}
-\cvline{Game Design}{
+\cvitem{Web}{React, AngularJS, Flask, Node.js, AWS, Google App Engine, Meteor, Tornado}
+\cvitem{Databases}{Amazon DynamoDB, BigTable, MySQL, SQLite, MongoDB}
+\cvitem{Game Design}{
 	Highly experienced with Unreal Development Kit (UDK) and the Unreal Engine\newline
 	Other: LibGDX (Java), Phaser (HTML5), SDL (C++), Sparrow (iOS), OpenGL
 }
-\cvline{Adobe}{Photoshop, Illustrator, After Effects, InDesign, Premiere Pro, Flash}
-\cvline{Preferences}{Git, Sublime Text, Gulp}
+\cvitem{Adobe}{Photoshop, Illustrator, After Effects, InDesign, Premiere Pro, Flash}
+\cvitem{Preferences}{Git, Sublime Text, Gulp}
 
 %\section{References}
-%\cvline{}{Available upon request}
+%\cvitem{}{Available upon request}
 
 \end{document}
