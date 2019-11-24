@@ -1,6 +1,6 @@
 BUILD = build
 
-.PHONY: build clean watch
+.PHONY: build clean resume watch
 
 build: clean
 	@echo 'Building...'
@@ -12,6 +12,9 @@ build: clean
 
 clean:
 	rm -rf $(BUILD)
+
+resume:
+	cd resume/ && pdflatex william-gaul-resume.tex
 
 watch:
 	@tiddlywiki . --listen

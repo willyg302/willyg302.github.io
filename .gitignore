@@ -1,3 +1,8 @@
 /build/
 # This file changes every time TiddlyWiki runs and is not important
 tiddlers/\$__StoryList.tid
+
+# Resume
+*.aux
+*.log
+*.out

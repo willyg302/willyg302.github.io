@@ -3,5 +3,5 @@ exclude:
   - resume/
   - tiddlers/
   - Makefile
+  - README.md
   - tiddlywiki.info
-  - TODO.md
