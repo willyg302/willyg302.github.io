@@ -1,0 +1,7 @@
+exclude:
+  - customizations/
+  - resume/
+  - tiddlers/
+  - Makefile
+  - tiddlywiki.info
+  - TODO.md

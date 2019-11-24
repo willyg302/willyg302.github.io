@@ -1,0 +1,11 @@
+created: 20190924022847923
+modified: 20191124051144224
+tags: 
+title: Colophon
+type: text/vnd.tiddlywiki
+
+This site is powered by [[TiddlyWiki|https://tiddlywiki.com/]], an amazing "non-linear personal web notebook". The following hacks have been made (or in TiddlyWiki parlance, the following shadows have been overridden):
+
+* Show "All" and "Tags", and hide "More" and "Tools", as sidebar tabs by adding/removing the `$:/tags/SideBar` tag.
+* Remove the "tag manager" button from `$:/core/ui/MoreSideBar/Tags`.
+* Remove the advanced search hourglass from `$:/core/ui/SideBarSegments/search`.

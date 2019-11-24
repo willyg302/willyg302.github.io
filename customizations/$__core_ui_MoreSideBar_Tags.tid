@@ -1,0 +1,16 @@
+caption: {{$:/language/SideBar/Tags/Caption}}
+created: 20190922174128874
+modified: 20190922174132329
+tags: $:/tags/SideBar $:/tags/MoreSideBar
+title: $:/core/ui/MoreSideBar/Tags
+type: text/vnd.tiddlywiki
+
+<$list filter={{$:/core/Filters/AllTags!!filter}}>
+
+<$transclude tiddler="$:/core/ui/TagTemplate"/>
+
+</$list>
+
+<hr class="tc-untagged-separator">
+
+{{$:/core/ui/UntaggedTemplate}}

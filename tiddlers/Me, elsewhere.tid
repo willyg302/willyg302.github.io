@@ -1,0 +1,22 @@
+created: 20190924030551683
+modified: 20190924050622803
+tags: about
+title: Me, elsewhere
+type: text/vnd.tiddlywiki
+
+<style>
+.willyg-social a {
+text-decoration: none;
+}
+.willyg-social img {
+width: 64px;
+margin: 3px;
+}
+</style>
+<div class="willyg-social">
+<$list filter="[tag[$:/willyg/tags/social]]">
+<a href={{!!href}} target="_blank" rel="noopener noreferrer">
+<$transclude/>
+</a>
+</$list>
+</div>

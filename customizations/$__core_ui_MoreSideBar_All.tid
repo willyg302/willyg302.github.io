@@ -1,0 +1,8 @@
+caption: {{$:/language/SideBar/All/Caption}}
+created: 20190922174048899
+modified: 20190922174053353
+tags: $:/tags/SideBar $:/tags/MoreSideBar
+title: $:/core/ui/MoreSideBar/All
+type: text/vnd.tiddlywiki
+
+<$list filter={{$:/core/Filters/AllTiddlers!!filter}} template="$:/core/ui/ListItemTemplate"/>

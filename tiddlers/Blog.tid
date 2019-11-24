@@ -1,0 +1,17 @@
+created: 20191124035339200
+modified: 20191124052458641
+tags: 
+title: Blog
+type: text/vnd.tiddlywiki
+
+<ul><$list filter="[tag[blog]!tag[historical]!sort[created]]"><li>
+<$view field="created" format="date" template="YYYY-0MM-0DD"/>: <$link to={{!!title}}><$view field="title"/></$link>
+</li></$list></ul>
+
+!! Old posts
+
+The following posts were written on previous blogs that I have maintained and are copied here for posterity.
+
+<ul><$list filter="[tag[blog]tag[historical]!sort[created]]"><li>
+<$view field="created" format="date" template="YYYY-0MM-0DD"/>: <$link to={{!!title}}><$view field="title"/></$link>
+</li></$list></ul>
