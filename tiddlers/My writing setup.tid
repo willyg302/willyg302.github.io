@@ -1,0 +1,80 @@
+created: 20210307204702107
+modified: 20210307210508120
+tags: blog writing
+title: My writing setup
+type: text/vnd.tiddlywiki
+
+At an age when others might want to be astronauts or firefighters or garbagemen, I wanted to be either a paleontologist or a writer. I stopped wanting to be a paleontologist when I realized that (spoiler alert) all the dinosaurs are dead. But my love for writing persisted.
+
+I wrote voraciously as a kid. I even published a novel that I'm no longer proud of, in the same way an aspiring artist might regard their fridge drawing period. Recently I got curious and dug through crusty Word files that hadn't been cracked open in a decade or so to add up some numbers. Somewhere north of half a million words. No candle to Stephen King or Robert Jordan, but not too shabby for a guy as old as those Word files, either.
+
+Over time, of course, that fervor waned. High school followed by college had something to do with it. I discovered programming and began writing in different languages sporting lots more weird symbols. When I could write in my native tongue it was in fits and starts and then, when I joined The Industry, nothing at all.
+
+But then [[2020|https://en.wikipedia.org/wiki/COVID-19_pandemic]] happened. Like many others, I was suddenly gifted with an enormous amount of free time I no longer knew how to spend, so I figured I'd at least try my hand at old skills. This blog post is evidence that I'm well on my way to succeeding -- and by "well on my way" I mean "I've got more than a dozen pages and haven't skipped a weekend since March of the big two-oh". As is [[customary|https://i.redd.it/v5mxi7u1ex251.png]] (and since I don't want to delve too far into //what// I'm writing yet) it'll go over how I put words to digital paper.
+
+!! Technologies
+
+Microsoft Word was //so// 2010. Since then I've learned about the robustness of text-based formats combined with a suitable version control system, so I'm using [[LaTeX|https://www.latex-project.org/]] (specifically XeLaTeX, which is pretty all-in-one and just a `sudo apt-get install texlive-xetex` away on Ubuntu). My editor of choice is [[Sublime Text|https://www.sublimetext.com/]] which some might like for its [[Distraction Free Mode|https://www.sublimetext.com/docs/3/distraction_free.html]], although I tend to not use it. There's not much you really need in a text editor when writing prose, so feel free to go with your favorite.
+
+Oh, except "find in files". Absolutely essential. More on that later.
+
+To control all of this stuff I use the command line, again because I'm a programmer. I've got a Makefile with a bunch of random commands thrown in. Obviously `xelatex <some entry point>.tex` turns your source text into a nice-looking PDF, but there are some other more interesting ones:
+
+* How many words have I written? `detex main.tex 2>/dev/null | wc -w`
+* How long is the book? `pdfinfo <some entry point>.pdf | awk '/^Pages:/ {print $$2}'`
+* How many writing sessions have I done? `git rev-list HEAD --count`
+* How many days have I been at it? `echo "Days: $$(( ($$(date +%s) - $$(date -d "$$(git log --reverse --format=%ci | head -n 1)" +%s)) / (60*60*24) ))"`
+
+You can get as crazy as your shell scripting heart desires. Here's how long each chapter is:
+
+```sh
+find chapters/*.aux | xargs -I{} sh -c ' \
+  echo -n $$(expr \
+    $$(cat $$1 | grep '{page}' | cut -d '{' -f 3 | cut -d '}' -f 1) \
+    - $$(cat $$1 | grep chapternumberline | cut -d '{' -f 9 | cut -d '}' -f 1) \
+    - 2) \
+  && echo "\t$$(echo $$1 | cut -d / -f 2 | cut -d . -f 1)"' - {}
+```
+
+Ordinarily by this point I'd be reaching for Python, but I've tried to resist the urge to develop a framework around my writing, so quick shell scripts it is.
+
+!! Book setup
+
+There's a [[running joke|https://i.imgur.com/CfSwf.jpg]] that LaTeX causes its users to spend way too much time agonizing over the look of their compiled product, as opposed to its content. And at least at the beginning that was true for me as well; I remember a few weekends dedicated just to tweaking package configurations in pursuit of the perfect book layout. But in weekends since I've actually observed the opposite: with WYSIWYG programs like Word you're always staring at exactly what you're submitting, so even with manuscript setups like double-spaced Courier New there's a tendency to micromanage paragraph breaks and the like. With a `.tex` file open I just //write//.
+
+To save you those initial weekends, here are some hot tips on achieving a nice book setup in LaTeX:
+
+* Use [[memoir|https://ctan.org/pkg/memoir?lang=en]]. Seriously. And get familiar with [[what it can do|https://mirrors.concertpass.com/tex-archive/macros/latex/contrib/memoir/memman.pdf]], which is pretty much anything.
+* Separate configuration from content. I've got a `config.tex` file that I `\input{config}` as literally the first line in my `main.tex`. Lots of random arcane flags, haven't touched it in months.
+* Unless you're writing an academic paper, run far away from the default LaTeX fonts. Google Fonts was my source for some nice alternatives. I settled on [[Crimson Text|https://fonts.google.com/specimen/Crimson+Text]] for body text and [[Inconsolata|https://fonts.google.com/specimen/Inconsolata]] for the occasional monospaced stuff.
+
+One of the nice things about compiling your book is that you can set up multiple "targets" quite easily. For example, here's my entry point to generate something that looks like a real book:
+
+```tex
+\documentclass[ebook,12pt,extrafontsizes]{memoir}
+\input{main}
+```
+
+And here's another for a manuscript format that you might submit to a publisher:
+
+```tex
+\documentclass[letterpaper,12pt,extrafontsizes,ms]{memoir}
+\input{main}
+```
+
+Easy, right? Like I said, use memoir.
+
+!! Package setup
+
+The `.tex` files I've mentioned so far (config and main) don't amount to much -- a couple hundred lines total. I've placed the real meat of the book in a `chapters/` directory, one file per chapter. Of course you can slice and dice your book however you like, or even stick it all in one giant file, but a file per chapter seemed to make things more manageable for me. This is where "find in files" comes into play. Very //very// often you'll want to reference that thing you said two chapters ago, or see how many times you've used a certain word because you're paranoid about [[blue chambray workshirts|https://patcoston.com/StephenKing/StephenKing-Chambray.aspx]], or get at the TODOs sprinkled throughout for unfinished sections or rough patches that need early editing. When your book is sprawled across multiple files such functionality is a must.
+
+I learned pretty quickly that the actual act of writing is only a fraction of the creative process that births a complete novel. Just as important is note-taking. Like this blog, I use [[TiddlyWiki|https://tiddlywiki.com/]] for my notes in a `notes/` directory. Incidentally, this lets me search across both my book //and// tiddlers in one go, which is pretty handy for staying true to worldbuilding details.
+
+You might want images in your book as well, and for that the [[graphicx|https://ctan.org/pkg/graphicx?lang=en]] package is handy. I've got an `assets/` directory along with `\graphicspath{{assets/}}`, which lets me reference images by file name in an `\includegraphics` command.
+
+Last but not least, here are some useful custom commands I've defined:
+
+* `\newcommand{\thought}[1]{\emph{#1}}` to distinguish character thoughts from the standard `\emph`.
+* `\newenvironment{flashback}{\itshape}{}` to distinguish multi-paragraph flashbacks.
+
+You'll notice there aren't many. Try not to go overboard, and instead focus on your writing!
