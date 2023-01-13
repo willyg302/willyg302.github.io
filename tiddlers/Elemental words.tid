@@ -1,0 +1,128 @@
+created: 20230113040450706
+modified: 20230113041452074
+tags: blog
+title: Elemental words
+type: text/vnd.tiddlywiki
+
+!! Shower thoughts
+
+Over the holidays I was home visiting family, and the shower I used for several weeks sported a very interesting [[periodic table shower curtain|https://www.amazon.com/Periodic-Elements-Curtain-Odorless-Non-Toxic/dp/B012NDI3PU]] that my mom had picked out. For the first few days I spent my shower time brushing up on the elements and marveling at how many I didn't know. I found out that the Ununoctium of my childhood had a [[new name|https://en.wikipedia.org/wiki/Oganesson]]. I made an "element tier list" in my head (Carbon S-tier, Terbium F-tier, etc.). And then, exhausting these basic activities, I started making words out of the element symbols.
+
+There are some easy ones that will jump out at you right away -- `PoRn`, for instance (Polonium-Radon, also not good for your health) -- but of course my goal was to be creative. I found the most radioactive substance known to man: `PoLiTiCs`. Being a guitarist I was particularly proud about finding `LuThIEr`. `CoNiCAl` was another favorite.
+
+Then, being a programmer, I began asking more difficult questions. How many words //can// you make using the elements? What's the longest one? Does anything change if you disallow replacement? These were not questions I could answer in the shower.
+
+!! Diving in
+
+A good first step to any programming challenge is identifying prior art. We are lazy creatures after all; why do the work when someone else already has? (side note: in coding interviews I //do// give bonus points to candidates who point out a library solution...just don't expect that to be the end of the conversation!) Surprisingly I didn't find much, though [[this random Gist|https://gist.github.com/jeffThompson/7789182]] suggests I'm not the first in history to think about elemental words, and [[this blog post|https://www.amin.space/blog/elemental_speller/]] shows I'm not even the first to write about them. I didn't end up reading the blog post since I didn't want to spoil the fun for myself, but for a perfectly ordinary work-related task I might have stopped right there.
+
+Next up is methodology. What languages and/or technologies will I reach for? Are there any constraints to keep in mind? Sometimes these considerations are dictated by the problem at hand. For example, if you're doing anything AI/ML you might have no choice but to use Python in an appropriately beefy computing environment. If you're doing analytics you might need some scatter-gather cloud thingy. In this case I figured the size of the English language would be one constraint:
+
+```sh
+λ cat /usr/share/dict/words | wc -l
+479828
+λ du -hsL /usr/share/dict/words
+4.8M    /usr/share/dict/words
+λ sha256sum /usr/share/dict/words
+ce01701fc2dc031cdafaafa610a0c9b06c05f921734139de02299dbb499d3ba5  /usr/share/dict/words
+```
+
+Thankfully, in today's utopia of CPU and RAM these numbers are peanuts. I decided to do whatever the heck I wanted locally, which nowadays usually means "write a Node.js script".
+
+Last thing before creating said script and typing like a feverish monkey: what's our plan? Again, most of the time it's more prudent to not reinvent the wheel, and lean on existing solutions by others who have devoted way more thought to the problem -- these are the folks who have coded up their $$\mathcal{O}(n\log\log n)$$ SIMD-optimized research brainchild while you're still dancing around with your pitiful $$\mathcal{O}(n^2)$$. But since I'm doing this for fun, I treated it like an interview question and spent some time noodling on it paper-and-pencil style.
+
+My logic was pretty straightforward: in order for a word to be expressed using only element symbols, it must //start// with an element symbol. Then you've got this starting symbol and the tail of the word, and you can apply the same argument to the tail. And so on, until either 1) you've got nothing left (hooray!); 2) you've got something that doesn't start with an element symbol (aww). There's one wrinkle, though...you can't just give up the first time things don't work, because there might be a working combination "higher up" that you haven't tried. To illustrate this consider the word "nag": starting with `Na` won't work because there is no element with the symbol `G`, but `NAg` is valid.
+
+!! Monkey time
+
+After about 20 minutes of typing I came up with the following:
+
+```js
+const symbols = `
+H                                                  He
+Li Be                               B  C  N  O  F  Ne
+Na Mg                               Al Si P  S  Cl Ar
+K  Ca Sc Ti V  Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr
+Rb Sr Y  Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I  Xe
+Cs Ba Lu Hf Ta W  Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn
+Fr Ra Lr Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og
+      La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb
+      Ac Th Pa U  Np Pu Am Cm Bk Cf Es Fm Md No
+`.trim().split(/\s+/);
+const lowercaseSymbols = symbols.map((e) => e.toLowerCase());
+const maxSymbolLength = Math.max(...symbols.map((e) => e.length));
+
+const toSymbols = (s) => {
+  if (s.length === 0) {
+    return [];  // Base case
+  }
+  for (let i = maxSymbolLength; i >= 1; i--) {  // Prefer longer symbols
+    if (s.length >= i) {
+      const head = s.slice(0, i);
+      if (lowercaseSymbols.includes(head)) {
+        const tail = toSymbols(s.slice(i));
+        if (tail) {
+          return [symbols[lowercaseSymbols.indexOf(head)], ...tail];
+        }
+      }
+    }
+  }
+  return undefined;
+};
+
+require('fs').readFileSync('/usr/share/dict/words', 'utf8').split('\n').forEach((word) => {
+  if (!word) {
+    return;  // Empty line, ignore
+  }
+  const symbols = toSymbols(word);
+  if (symbols) {
+    console.log(symbols.join(''));
+  }
+});
+```
+
+Several minutes may have been devoted solely to making the pretty ASCII periodic table, but I digress. And despite the naive solution and limited time I spent on it, it's quite fast (verifying correctness is left as an exercise to the reader):
+
+```sh
+λ time node elemental-words.js | wc -l
+53040
+
+real    0m1.988s
+user    0m1.821s
+sys     0m0.566s
+```
+
+11.6% of words, not bad! How about the longest word?
+
+```sh
+λ node elemental-words.js | awk '{ if ( length > x ) { x = length; y = $0 } } END { print y }'
+NoNRePReSeNTaTiONaLiSm
+```
+
+Figuring out non-replacement requires a little bit of tweaking:
+
+```diff
+15c15
+< const toSymbols = (s) => {
+---
+> const toSymbols = (s, used = []) => {
+22,23c22,23
+<       if (lowercaseSymbols.includes(head)) {
+<         const tail = toSymbols(s.slice(i));
+---
+>       if (lowercaseSymbols.includes(head) && !used.includes(head)) {
+>         const tail = toSymbols(s.slice(i), [...used, head]);
+```
+
+```sh
+λ time node elemental-words.js | wc -l
+38877
+
+real    0m1.893s
+user    0m1.857s
+sys     0m0.332s
+λ node elemental-words.js | awk '{ if ( length > x ) { x = length; y = $0 } } END { print y }'
+ArCHCoNFrAtErNiTiEs
+```
+
+I was surprised that a majority (73.3%) of the words expressible with element symbols could also be done with unique symbols. This might say something deep about phoneme distributions or another linguistic concept I know nothing about, but we'll leave that for another time. //Au ReVOIr//!
