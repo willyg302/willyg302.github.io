@@ -1,0 +1,46 @@
+created: 20231021174348099
+modified: 20231021174412462
+tags: blog
+title: Caravan math
+type: text/vnd.tiddlywiki
+
+I'm plotting a story where there's a [[caravan|https://en.wikipedia.org/wiki/Caravan_(travellers)]] going from point A to point B, and like usual my programmer self is getting caught up in the logistics of it all. How long will it take? How many vehicles are needed? What do they do about fuel, or rest, or supplies if they run out? In particular the journey's duration seems important because it impacts the timeline of the story as a whole. But hey, we're not programmers for nothing -- let's math!
+
+First some basics. [[This article|https://www.britannica.com/topic/caravan-desert-transport]] says:
+
+<<<
+In progress, a caravan averaged 2–3 miles (3–5 km) per hour for 8 to 14 hours each day or, in hot weather, each night.
+<<<
+
+This is...a little too quick for me. I'm looking at an overall distance of about 400 miles, which even at the slowest (2 mph for 8 hours a day) can be covered in 25 days. We can slow this down a little bit by considering the logistics of classical armies, both in terms of [[raw movement|https://acoup.blog/2019/10/06/new-acquisitions-how-fast-do-armies-move/]] and [[supplies|https://acoup.blog/2022/07/15/collections-logistics-how-did-they-do-it-part-i-the-problem/]]:
+
+<<<
+...a normal large body of infantry moves something closer 8-12 miles per day...
+
+...for a group of thirty infantryman the first wagon doubles their range from 120 to 240 miles (less really, horses cannot be worked so many days consecutively). Doubling again to around 400 (accounting for horse rest time) requires not two but //six// wagons for thirty men.
+<<<
+
+Okay cool, call it 10 miles per day and we've got a 40-day journey. This is better, but still not enough time to let the plot breathe and the characters develop. What else can we do?
+
+Let's park (hehe) that for a minute and consider other variables. My futuristic caravan doesn't require horses but range is still a concern; the farther you go the more you need to get there without caravansaries along the way. For a family group of up to 8 people, going 400 miles seems reasonable with the contents of a large RV that averages 10-15 meters in length. A slow-moving caravan can probably be densely packed, but let's allocate 30 meters per vehicle for buffer -- you don't want to be //too// close to each other, in case some pillagers swoop in or something.
+
+If we assume a party size of 500, then the caravan could be up to 100 vehicles and 3 km long. This is incidentally about the length of the longest [[wagon trains|https://lovethemaldives.com/faq/what-was-the-largest-wagon-train-ever-to-go-west]] (don't ask me why a Maldives tourism site has details about Old West wagon trains) and [[trains in general|https://en.wikipedia.org/wiki/Longest_trains]]. And unlike a locomotive, recall that a chain of independent human-controlled vehicles must start and stop more like an infantry, which takes precious time each morning and evening.
+
+So I had a thought: what if the travelers just didn't want to do that every day? I mean, such is the life of a nomad, but you gotta admit it'd be pretty annoying (I know, I know, my spoiled Internet-addicted self would have perished in the 1800s). I started imagining a caravan moving more like a tank tread, where a portion of the chain can remain stationary for an extended period of time while the rest of the loop "wraps around". Would this be any less efficient?
+
+Let's introduce a few variables:
+
+* $$L$$: length of a vehicle (m)
+* $$N$$: number of vehicles
+* $$T$$: number of vehicles in motion at any given time
+* $$V$$: velocity of an individual vehicle (km/h)
+
+Then the distance a single vehicle must travel to get from back to front is $$LN$$, which it can do in $$\frac{LN}{1000V}$$. But during this time the progress of the total caravan only advances by that vehicle's length, so overall the caravan's speed is $$\frac{\frac{L}{1000}}{\frac{LN}{1000V}} = \frac{V}{N}$$ (I find it kind of cool that this doesn't depend on the vehicle's length at all)! And for more than one vehicle along the "upper track" we simply multiply by $$T$$ to get the general formula $$\frac{TV}{N}$$. For the degenerate case of continuous movement, as in a real tank tread, we have $$T = \frac{N}{2}$$, for a velocity of $$\frac{V}{2}$$.
+
+Let's assume the slowest $$T = 1$$. Using a nice round example of 100 vehicles each capable of 30 km/h, this gives a convoy speed of 0.3 km/h or about 2.5 km/day. Using our example above of 10 miles per day we get ~0.02 km/h or 0.16 km/day. This certainly does seem slower -- a journey of 257 days for the first example, and for the second a little over 11 years!
+
+Unfortunately, the cycle length (the time that a given vehicle is stationary) doesn't work out so great. It's the time taken to travel the caravan's length at caravan speed, or $$\frac{\frac{LN}{1000}}{\frac{TV}{N}} = \frac{LN^2}{1000TV}$$, which for our examples are 10 hours and 150 hours, respectively. Thus for a middling journey duration you're still moving about every other day on average -- hardly infrequent enough to throw out some lawn chairs and smoke a brisket.
+
+Is any of this yak shaving at all important to the story? Absolutely not. We're not going to go on a [[whale|https://etc.usf.edu/lit2go/42/moby-dick/682/chapter-32-cetology/]]-sized mathematical digression in chapter two. All we care about is //feasibility//, i.e. is it //possible// that it would take a group of 500 people longer than a few months to travel 400 miles by caravan, ignoring all other plot factors? I find this important because, for all their escapism, stories still operate by internal rules. And readers are aware of these rules, at least at a subconscious level -- I'll notice if you tell me the prince Paul Revered his way over to the next kingdom in a single night after waiting weeks for the royal messenger to arrive. So yeah. [[Math|https://www.youtube.com/watch?v=YRL4uIVzVWI]]!
+
+Until next time.
